@@ -5,7 +5,7 @@ import markdown
 
 def index_page(env):
     template = env.get_template("index/base.j2")
-    with open("output/index.html", mode='w') as f:
+    with open("docs/index.html", mode='w') as f:
         f.write(template.render())
 
 
@@ -15,12 +15,12 @@ def about_page(env):
         s = f.read()
         text = md.convert(s)
     template = env.get_template("about/base.j2")
-    with open("output/about.html", mode='w') as f:
+    with open("docs/about.html", mode='w') as f:
         f.write(template.render({'body_text': text}))
 
 
 if __name__ == "__main__":
-    os.makedirs("output", exist_ok=True)
+    os.makedirs("docs", exist_ok=True)
     env = Environment(
         loader=FileSystemLoader("template"),
         autoescape=select_autoescape()
