@@ -30,3 +30,7 @@ pythonで便利スクリプト作るの大好きマンです。
 
 ## 連絡先
 [Twitter](https://twitter.com/yoshiken_tut)か[こちらのフォーム](https://forms.gle/HvXBKrz85BFaduCx8)まで。
+
+
+## CONTRIBUTING
+issue作ってくれると助かります。めんどくさいときはTwitterあたりでリプライください。
