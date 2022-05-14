@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>{{ title }}</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <meta name="description" content={{ description }}>
+  {% with tile=tile, description=description, url=url %}
+  {% include "common/ogp.j2" %}
+  {% endwith %}
+  <link rel="canonical" href={{ url }}>
+  <link rel="icon" href="static/favicon.ico">
+  <meta name="theme-color" content="#CCFFFF">
+</head>

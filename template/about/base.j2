@@ -1,0 +1,10 @@
+{% with title = "about",
+        description = "yoshikenがプログラミングや日記、ポエムを書いていくページです。",
+        url = "https://yoshiken.dev/about"
+%}
+{% include "common/head.j2" %}
+{% endwith %}
+
+{% with body_text=body_text %}
+{% include "about/body.j2" %}
+{% endwith %}
