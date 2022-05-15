@@ -1,6 +1,7 @@
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 import os
 import markdown
+import shutil
 
 
 def index_page(env):
@@ -19,6 +20,10 @@ def about_page(env):
         f.write(template.render({'body_text': text}))
 
 
+def cp_favicon():
+    shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
+
+
 if __name__ == "__main__":
     os.makedirs("docs", exist_ok=True)
     env = Environment(
@@ -27,3 +32,4 @@ if __name__ == "__main__":
     )
     index_page(env)
     about_page(env)
+    cp_favicon()
