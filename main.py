@@ -11,8 +11,7 @@ def index_page(env):
         f.write(template.render())
 
 
-def about_page(env):
-    md = markdown.Markdown()
+def about_page(env, md):
     with open("content/about.md") as f:
         s = f.read()
         text = md.convert(s)
@@ -25,10 +24,10 @@ def cp_favicon():
     shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
 
 
-def articles_page(env):
+def articles_page(env, md):
     output_dir = "docs/articles"
     os.makedirs(output_dir, exist_ok=True)
-    md = markdown.Markdown()
+
     articles_list = glob.glob("./content/articles/*")
     for article in articles_list:
         template = env.get_template("articles/base.j2")
@@ -42,11 +41,12 @@ def articles_page(env):
 
 if __name__ == "__main__":
     os.makedirs("docs", exist_ok=True)
+    md = markdown.Markdown(extensions=['extra', 'tables', 'fenced_code', 'abbr'])
     env = Environment(
         loader=FileSystemLoader("template"),
         autoescape=select_autoescape()
     )
     index_page(env)
-    about_page(env)
+    about_page(env, md)
     cp_favicon()
-    articles_page(env)
+    articles_page(env, md)
