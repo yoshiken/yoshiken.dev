@@ -24,7 +24,8 @@ Summary: This meta is a Pelican compliant format.
 >> Nest Blockquotes
 
 Horizontal rules
-------
+
+---------
 
 [Links](example.com)
 
