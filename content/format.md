@@ -1,5 +1,5 @@
-Title:
-Date:
+Title: format
+Date: 2022-05-15
 Category: diary, tech
 Summary: This meta is a Pelican compliant format.
 
