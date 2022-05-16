@@ -26,17 +26,15 @@ def cp_favicon():
     shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
 
 
-def convert_articles(env, md):
+def convert_articles(md):
     articles_list = glob.glob("./content/articles/*")
     articles = []
     for article in articles_list:
-
         tmp_txt = ""
         with open(article) as f:
             body = {}
             lines = f.readlines()
             for line in lines:
-                print("".join(lines))
                 if line.startswith("Title:"):
                     body['tile'] = re.sub('^Title:', "", line)
                     continue
@@ -49,7 +47,7 @@ def convert_articles(env, md):
                 if line.startswith("Category:"):
                     body['category'] = re.sub('^Category:', "", line)
                     continue
-                tmp_txt.join(line)
+                tmp_txt += line
             body['text'] = md.convert(tmp_txt)
             body['output_file_name'] = os.path.splitext(os.path.basename(article))[0] + ".html"
             articles.append(body)
