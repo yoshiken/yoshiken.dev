@@ -55,11 +55,11 @@ def convert_articles(md):
 
 
 def output_aricles_pages(env, articles):
-    output_dir = "docs/articles"
+    output_dir = "docs/articles/"
     os.makedirs(output_dir, exist_ok=True)
     template = env.get_template("articles/base.j2")
     for article in articles:
-        with open(output_dir + "/" + article['output_file_name'], mode='w') as f:
+        with open(output_dir + article['output_file_name'], mode='w') as f:
             f.write(template.render({'body_text': article['text']}))
 
 
