@@ -1,5 +1,16 @@
 <body>
   {% include "common/header.j2" %}
 
+  <section>
+    <ul>
+    {% for article in articles %}
+      <li>
+        <time datetime="{{ article.date }}">{{ article.date }}</time><br>
+        <a href="/articles/{{ article. output_file_name}}"> {{ article.title }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  </section>
+
   {% include "common/footer.j2" %}
 </body>

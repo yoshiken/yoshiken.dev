@@ -6,10 +6,10 @@ import glob
 import re
 
 
-def index_page(env):
+def convert_index_page(env, articles):
     template = env.get_template("index/base.j2")
     with open("docs/index.html", mode='w') as f:
-        f.write(template.render())
+        f.write(template.render({'articles': articles}))
 
 
 def convert_unique_pages(env, md, unique_pages):
@@ -70,9 +70,9 @@ if __name__ == "__main__":
         loader=FileSystemLoader("template"),
         autoescape=select_autoescape()
     )
-    index_page(env)
     unique_pages = ["about", "format"]
     convert_unique_pages(env, md, unique_pages)
     cp_favicon()
     articles = convert_articles(md)
     output_aricles_pages(env, articles)
+    convert_index_page(env, articles)
