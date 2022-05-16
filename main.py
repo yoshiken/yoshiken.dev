@@ -15,11 +15,11 @@ def index_page(env):
 def convert_unique_pages(env, md, unique_pages):
     for page in unique_pages:
         with open("content/" + page + ".md") as f:
-        s = f.read()
-        text = md.convert(s)
-    template = env.get_template("about/base.j2")
+            s = f.read()
+            text = md.convert(s)
+        template = env.get_template("about/base.j2")
         with open("docs/" + page + ".html", mode='w') as f:
-        f.write(template.render({'body_text': text}))
+            f.write(template.render({'body_text': text}))
 
 
 def cp_favicon():
@@ -54,18 +54,13 @@ def convert_articles(md):
     return articles
 
 
+def output_aricles_pages(env, articles):
     output_dir = "docs/articles"
     os.makedirs(output_dir, exist_ok=True)
-
-    articles_list = glob.glob("./content/articles/*")
-    for article in articles_list:
-        template = env.get_template("articles/base.j2")
-        with open(article) as f:
-            s = f.read()
-            text = md.convert(s)
-            output_file_name = os.path.splitext(os.path.basename(article))[0] + ".html"
-        with open(output_dir + "/" + output_file_name, mode='w') as f:
-            f.write(template.render({'body_text': text}))
+    template = env.get_template("articles/base.j2")
+    for article in articles:
+        with open(output_dir + "/" + article['output_file_name'], mode='w') as f:
+            f.write(template.render({'body_text': article['text']}))
 
 
 if __name__ == "__main__":
@@ -79,4 +74,5 @@ if __name__ == "__main__":
     unique_pages = ["about", "format"]
     convert_unique_pages(env, md, unique_pages)
     cp_favicon()
-    articles_page(env, md)
+    articles = convert_articles(md)
+    output_aricles_pages(env, articles)
