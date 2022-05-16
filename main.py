@@ -3,6 +3,7 @@ import os
 import markdown
 import shutil
 import glob
+import re
 
 
 def index_page(env):
@@ -24,7 +25,36 @@ def cp_favicon():
     shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
 
 
-def articles_page(env, md):
+def convert_articles(env, md):
+    articles_list = glob.glob("./content/articles/*")
+    articles = []
+    for article in articles_list:
+
+        tmp_txt = ""
+        with open(article) as f:
+            body = {}
+            lines = f.readlines()
+            for line in lines:
+                print("".join(lines))
+                if line.startswith("Title:"):
+                    body['tile'] = re.sub('^Title:', "", line)
+                    continue
+                if line.startswith("Date:"):
+                    body['date'] = re.sub('^Date:', "", line)
+                    continue
+                if line.startswith("Summary:"):
+                    body['summary'] = re.sub('^Date:', "", line)
+                    continue
+                if line.startswith("Category:"):
+                    body['category'] = re.sub('^Category:', "", line)
+                    continue
+                tmp_txt.join(line)
+            body['text'] = md.convert(tmp_txt)
+            body['output_file_name'] = os.path.splitext(os.path.basename(article))[0] + ".html"
+            articles.append(body)
+    return articles
+
+
     output_dir = "docs/articles"
     os.makedirs(output_dir, exist_ok=True)
 
