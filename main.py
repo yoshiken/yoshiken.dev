@@ -36,7 +36,7 @@ def convert_articles(md):
             lines = f.readlines()
             for line in lines:
                 if line.startswith("Title:"):
-                    body['tile'] = re.sub('^Title:', "", line)
+                    body['title'] = re.sub('^Title:', "", line)
                     continue
                 if line.startswith("Date:"):
                     body['date'] = re.sub('^Date:', "", line)
