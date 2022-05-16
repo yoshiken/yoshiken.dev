@@ -60,7 +60,7 @@ def output_aricles_pages(env, articles):
     template = env.get_template("articles/base.j2")
     for article in articles:
         with open(output_dir + article['output_file_name'], mode='w') as f:
-            f.write(template.render({'body_text': article['text']}))
+            f.write(template.render({'article': article}))
 
 
 if __name__ == "__main__":
