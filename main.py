@@ -12,12 +12,13 @@ def index_page(env):
         f.write(template.render())
 
 
-def about_page(env, md):
-    with open("content/about.md") as f:
+def convert_unique_pages(env, md, unique_pages):
+    for page in unique_pages:
+        with open("content/" + page + ".md") as f:
         s = f.read()
         text = md.convert(s)
     template = env.get_template("about/base.j2")
-    with open("docs/about.html", mode='w') as f:
+        with open("docs/" + page + ".html", mode='w') as f:
         f.write(template.render({'body_text': text}))
 
 
@@ -77,6 +78,7 @@ if __name__ == "__main__":
         autoescape=select_autoescape()
     )
     index_page(env)
-    about_page(env, md)
+    unique_pages = ["about", "format"]
+    convert_unique_pages(env, md, unique_pages)
     cp_favicon()
     articles_page(env, md)
