@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>yoshiken.dev</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <meta name="description" content=yoshikenがプログラミングや日記、ポエムを書いていくページです。>
+  
+  <meta property="og:title" content=yoshiken.dev>
+<meta property="og:description" content=yoshikenがプログラミングや日記、ポエムを書いていくページです。>
+<meta property="og:image" content="https://mywebsite.com/image.jpg">
+<meta property="og:image:alt" content="画像の説明文">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content=https://yoshiken.dev>
+  
+  <link rel="canonical" href=https://yoshiken.dev>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <h1>yoshiken.dev</h1>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1> yoshiken.dev初めました
+</h1>
+    <time datetime=" 2022-05-17
+"> 2022-05-17
+</time>
+    <h2>なんで初めたか</h2>
+<p>最近アウトプットしてないなーと思いつつ、zenやQiitaに書くほど時間が取れないし、なんかこうやってみたかった。</p>
+<p>あとgithubのプロフィールに別のドメイン乗せてたんだけどちょくちょくリンク切れてるって問い合わせがあって、むかーーーーしに実験で使ってたやつなので何置いてたかすら忘れてる。</p>
+<h2>仕組み</h2>
+<p>markdownをいい感じにhtmlにパースしてjinja2でレンダリングって簡単なやつ。</p>
+<p>詳しくはgithub見て。</p>
+<p><a href="https://github.com/yoshiken/yoshiken.dev">https://github.com/yoshiken/yoshiken.dev</a></p>
+<p>とりあえずgithub pages使いつつ手元にあって開いてるドメインを割り当てた。</p>
+<p>今は手元でビルドしないといけないけど将来的にGithub Actions使ったりとかslackから投稿できるようにとか色々やってみたい。改善点は超あるけどゆるりとやっていく</p>
+<p>デザインも<a href="https://simplecss.org/">https://simplecss.org/</a>を使ってるだけなのでやりたいなーと思いつつデザイン苦手なのでこのままでもいい気がしてる。simple is best.</p>
+<h2>余談</h2>
+<p>基本的にショットで使ったり簡単なchatbotは仕事でもpythonで書くことが多いけど知識のアップデートを怠っていたせいでびっくりすることがある。</p>
+<p>例えば昔はpythonでフォルダ作るときは</p>
+<pre><code class="language-python">try:
+    os.makedirs(new_dir_path)
+except FileExistsError:
+    pass
+
+
+if not os.path.isdir(path):
+    os.makedirs(path)
+</code></pre>
+<p>みたいに書いてたけど3.2以降は</p>
+<pre><code class="language-python">os.makedirs(path, exist_ok=True)
+</code></pre>
+<p>でいいのね。やっぱり定期的な知識のアップデート大事。けどパッチノート読む時間も無い。</p>
+<p>そんなときに最近使い始めたGitHub Copilotがすげー役に立った。「あれ？僕よりコードうまくない？僕いる？」ってなってしまった。</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
