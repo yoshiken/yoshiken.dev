@@ -1,6 +1,6 @@
-{% with title = "yoshiken.dev",
-        description = "yoshikenがプログラミングや日記、ポエムを書いていくページです。",
-        url = "https://yoshiken.dev"
+{% with title = article.title,
+        description = article.summary |default("yoshikenがプログラミングや日記、ポエムを書いていくページです。"),
+        url = "https://yoshiken.dev/articles/" + article.output_file_name
 %}
 {% include "common/head.j2" %}
 {% endwith %}

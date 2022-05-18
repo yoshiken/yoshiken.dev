@@ -26,6 +26,10 @@ def cp_favicon():
     shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
 
 
+def cp_ogpimg():
+    shutil.copyfile("./template/static/ogp.png", "./docs/ogp.png")
+
+
 def convert_articles(md):
     articles_list = glob.glob("./content/articles/*")
     articles = []
@@ -36,16 +40,16 @@ def convert_articles(md):
             lines = f.readlines()
             for line in lines:
                 if line.startswith("Title:"):
-                    body['title'] = re.sub('^Title:', "", line)
+                    body['title'] = re.sub('^Title:', "", line).replace('\n', '')
                     continue
                 if line.startswith("Date:"):
-                    body['date'] = re.sub('^Date:', "", line)
+                    body['date'] = re.sub('^Date:', "", line).replace('\n', '')
                     continue
                 if line.startswith("Summary:"):
-                    body['summary'] = re.sub('^Date:', "", line)
+                    body['summary'] = re.sub('^Summary:', "", line).replace('\n', '')
                     continue
                 if line.startswith("Category:"):
-                    body['category'] = re.sub('^Category:', "", line)
+                    body['category'] = re.sub('^Category:', "", line).replace('\n', '')
                     continue
                 tmp_txt += line
             body['text'] = md.convert(tmp_txt)
@@ -73,6 +77,7 @@ if __name__ == "__main__":
     unique_pages = ["about", "format"]
     convert_unique_pages(env, md, unique_pages)
     cp_favicon()
+    cp_ogpimg()
     articles = convert_articles(md)
     output_aricles_pages(env, articles)
     convert_index_page(env, articles)
