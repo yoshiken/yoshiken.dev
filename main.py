@@ -53,7 +53,7 @@ def convert_articles(md):
                     continue
                 tmp_txt += line
             body['text'] = md.convert(tmp_txt)
-            body['output_file_name'] = os.path.splitext(os.path.basename(article))[0] + ".html"
+            body['output_file_name'] = os.path.splitext(os.path.basename(article))[0]
             articles.append(body)
     return articles
 
@@ -63,7 +63,7 @@ def output_aricles_pages(env, articles):
     os.makedirs(output_dir, exist_ok=True)
     template = env.get_template("articles/base.j2")
     for article in articles:
-        with open(output_dir + article['output_file_name'], mode='w') as f:
+        with open(output_dir + article['output_file_name'] + ".html", mode='w') as f:
             f.write(template.render({'article': article}))
 
 
