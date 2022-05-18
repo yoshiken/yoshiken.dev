@@ -13,6 +13,11 @@
 
   <!-- Thank you https://github.com/kevquirk/simple.css -->
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+  </style>
   <meta name="description" content={{ description }}>
   {% with tile=tile, description=description, url=url %}
   {% include "common/ogp.j2" %}
