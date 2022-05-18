@@ -55,7 +55,8 @@ def convert_articles(md):
             body['text'] = md.convert(tmp_txt)
             body['output_file_name'] = os.path.splitext(os.path.basename(article))[0]
             articles.append(body)
-    return articles
+    sorted_articles = sorted(articles, key=lambda x: x['date'],reverse=True)
+    return sorted_articles
 
 
 def output_aricles_pages(env, articles):
