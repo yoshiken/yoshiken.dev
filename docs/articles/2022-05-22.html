@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Pythonのdatetime型におけるTZの難しさ。</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=naiveと、awareと、TZ>
+  
+  <meta property="og:title" content=Pythonのdatetime型におけるTZの難しさ。>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=naiveと、awareと、TZ>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-05-22>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-05-22>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>Pythonのdatetime型におけるTZの難しさ。</h1>
+    <time datetime="2022-05-22 01:53:00+09:00">2022-05-22</time>
+    <h2>Pythonのdatetimeには二種類あったという話</h2>
+<p>今このブログのsitemapを作ってるんですが、そのついでにdate周りを整備しようと思ったんですが、案外めんどくさかった。というかいままで意識してなかっった。</p>
+<p>まずはdatetimeオブジェクトには二種類ある。</p>
+<p><a href="https://docs.python.org/ja/3/library/datetime.html?highlight=datetime#aware-and-naive-objects">datetime --- 基本的な日付型および時間型 — Python 3.10.4 ドキュメント</a></p>
+<p>ざっくり説明すると</p>
+<ul>
+<li>aware<ul>
+<li>timezoneを含む</li>
+</ul>
+</li>
+<li>naive<ul>
+<li>timezoneを含まない</li>
+</ul>
+</li>
+</ul>
+<p>実際のコードで試す</p>
+<pre><code>$python
+02:10:18 2022
+Python 3.8.5 (default, Sep  3 2020, 07:12:45)
+[Clang 12.0.0 (clang-1200.0.31.1)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from datetime import datetime, timezone
+&gt;&gt;&gt; now = datetime.now()
+&gt;&gt;&gt; print(type(now))
+&lt;class 'datetime.datetime'&gt;
+&gt;&gt;&gt; print(now.tzinfo)
+None
+&gt;&gt;&gt; print(now.isoformat())
+2022-05-22T02:10:39.987654
+&gt;&gt;&gt; utc_now = datetime.now(timezone.utc)
+&gt;&gt;&gt; print(type(utc_now))
+&lt;class 'datetime.datetime'&gt;
+&gt;&gt;&gt; print(utc_now.tzinfo)
+UTC
+&gt;&gt;&gt; print(utc_now.isoformat())
+2022-05-21T17:11:28.897259+00:00
+</code></pre>
+<p>こんな感じ。</p>
+<p>でも <code>2022-05-22 02:13</code> を <code>strptime</code> したやつはどうしても <code>naive</code> になってしまう。</p>
+<p><code>2022-05-22T01:53:00+09:00</code> みたいにして <code>datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S%z')</code> にすると <code>aware</code> になるっぽい。</p>
+<p>えーめんどくさい…なんかいい感じにならんか考えよう…</p>
+<h2>追記</h2>
+<p>BBQしに行った。雨降ってたけどなんやかんや良かった。川と森が良い。</p>
+<p><a href="https://westriverbbq.com/">飯能河原 バーベキュー器材レンタルと食材の販売店舗｜West River BBQ （ウエストリバーBBQ）</a></p>
+<p><img src="https://i.imgur.com/fBXktZR.jpg" alt=""></p>
+<p>かーらーのー</p>
+<p>温泉入った。満足。</p>
+<p><a href="https://www.yurakirari.com/miyazawako/">埼玉県飯能市の天然温泉施設「宮沢湖温泉 喜楽里 別邸」</a></p>
+<p>ただ、片道2時間はきついねぇ〜</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
