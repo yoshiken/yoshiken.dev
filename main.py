@@ -4,6 +4,7 @@ import markdown
 import shutil
 import glob
 import re
+from datetime import datetime
 
 
 def convert_index_page(env, articles):
@@ -43,7 +44,9 @@ def convert_articles(md):
                     body['title'] = re.sub('^Title: ', "", line).replace('\n', '')
                     continue
                 if line.startswith("Date:"):
-                    body['date'] = re.sub('^Date: ', "", line).replace('\n', '')
+                    date_str = re.sub('^Date: ', "", line).replace('\n', '')
+                    body['date'] = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S%z')
+                    print(body['date'].isoformat())
                     continue
                 if line.startswith("Summary:"):
                     body['summary'] = re.sub('^Summary: ', "", line).replace('\n', '')

@@ -5,7 +5,7 @@
     <ul>
     {% for article in articles %}
       <li>
-        <time datetime="{{ article.date }}">{{ article.date }}</time><br>
+        <time datetime="{{ article.date }}">{{ article.date.strftime('%Y-%m-%d') }}</time><br>
         <a href="/articles/{{ article. output_file_name}}"> {{ article.title }}</a>
       </li>
     {% endfor %}
