@@ -40,16 +40,16 @@ def convert_articles(md):
             lines = f.readlines()
             for line in lines:
                 if line.startswith("Title:"):
-                    body['title'] = re.sub('^Title:', "", line).replace('\n', '')
+                    body['title'] = re.sub('^Title: ', "", line).replace('\n', '')
                     continue
                 if line.startswith("Date:"):
-                    body['date'] = re.sub('^Date:', "", line).replace('\n', '')
+                    body['date'] = re.sub('^Date: ', "", line).replace('\n', '')
                     continue
                 if line.startswith("Summary:"):
-                    body['summary'] = re.sub('^Summary:', "", line).replace('\n', '')
+                    body['summary'] = re.sub('^Summary: ', "", line).replace('\n', '')
                     continue
                 if line.startswith("Category:"):
-                    body['category'] = re.sub('^Category:', "", line).replace('\n', '')
+                    body['category'] = re.sub('^Category: ', "", line).replace('\n', '')
                     continue
                 tmp_txt += line
             body['text'] = md.convert(tmp_txt)
