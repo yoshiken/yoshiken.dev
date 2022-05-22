@@ -24,7 +24,7 @@ def convert_unique_pages(env, md, unique_pages):
 
 
 def cp_static():
-    shutil.copytree("./template/static", "./docs/static")
+    shutil.copytree("./template/static", "./docs", dirs_exist_ok=True)
 
 
 def convert_articles(md):
