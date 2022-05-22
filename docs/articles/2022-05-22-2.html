@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Pythonのdatetime型におけるTZの難しさ。2</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=YYYY-MM-DD hh:mm:ss でいけたわ。>
+  
+  <meta property="og:title" content=Pythonのdatetime型におけるTZの難しさ。2>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=YYYY-MM-DD hh:mm:ss でいけたわ。>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-05-22-2>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-05-22-2>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>Pythonのdatetime型におけるTZの難しさ。2</h1>
+    <time datetime="2022-05-22 11:55:00+09:00">2022-05-22</time>
+    <h2>別に文字を勝手に加工してやればええやんという結論</h2>
+<p><a href="https://yoshiken.dev/articles/2022-05-22">Pythonのdatetime型におけるTZの難しさ。</a> でうーんうーん悩んで <code>2022-05-22T01:53:00+09:00</code> って書く結論になったけど、寝て起きたらいや、別に <code>2022-05-22 11:55:00</code> って書いてpythonでconvertするときに諸々追加してあげればええやんという結論で既存の書き方で良くなった。</p>
+<p>やっぱ煮詰まったときは寝るに限る。</p>
+<p>実際の処理はこんな感じ</p>
+<pre><code>if line.startswith(&quot;Date:&quot;):
+    date_str = re.sub('^Date: ', &quot;&quot;, line).replace('\n', '')
+    body['date'] = datetime.strptime(date_str + '+09:00', '%Y-%m-%d %H:%M:%S%z')
+    print(body['date'].tzinfo)
+    print(body['date'].isoformat())
+    print(type(body['date']))
+</code></pre>
+<p>いまのところこのblogはJSTで統一するつもりだからDateで渡された文字列に <code>+ '+09:00'</code> してあげればいいだけっていう簡単な話</p>
+<p>で出力は</p>
+<pre><code>UTC+09:00
+2022-05-22 11:55:00+09:00
+&lt;class 'datetime.datetime'&gt;
+</code></pre>
+<p>はいGG〜</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
