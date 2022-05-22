@@ -23,12 +23,8 @@ def convert_unique_pages(env, md, unique_pages):
             f.write(template.render({'body_text': text}))
 
 
-def cp_favicon():
-    shutil.copyfile("./template/static/favicon.ico", "./docs/favicon.icon")
-
-
-def cp_ogpimg():
-    shutil.copyfile("./template/static/ogp.png", "./docs/ogp.png")
+def cp_static():
+    shutil.copytree("./template/static", "./docs/static")
 
 
 def convert_articles(md):
@@ -79,8 +75,7 @@ if __name__ == "__main__":
     )
     unique_pages = ["about", "format"]
     convert_unique_pages(env, md, unique_pages)
-    cp_favicon()
-    cp_ogpimg()
+    cp_static()
     articles = convert_articles(md)
     output_aricles_pages(env, articles)
     convert_index_page(env, articles)
