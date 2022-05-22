@@ -1,0 +1,10 @@
+name: push-google-sitemap
+on:
+  push:
+    path:
+      - 'docs/feed.xml'
+jobs:
+  push-google-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -X GET "https://www.google.com/ping?sitemap=https://yoshiken.dev/feed.xml"
