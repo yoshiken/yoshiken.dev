@@ -45,7 +45,7 @@ def convert_articles(md):
                     continue
                 if line.startswith("Date:"):
                     date_str = re.sub('^Date: ', "", line).replace('\n', '')
-                    body['date'] = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S%z')
+                    body['date'] = datetime.strptime(date_str + '+09:00', '%Y-%m-%d %H:%M:%S%z')
                     continue
                 if line.startswith("Summary:"):
                     body['summary'] = re.sub('^Summary: ', "", line).replace('\n', '')
