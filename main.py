@@ -7,13 +7,13 @@ import re
 from datetime import datetime
 
 
-def convert_index_page(env, articles):
+def convert_index_page(env, articles) -> None:
     template = env.get_template("index/base.j2")
     with open("docs/index.html", mode='w') as f:
         f.write(template.render({'articles': articles}))
 
 
-def convert_unique_pages(env, unique_pages):
+def convert_unique_pages(env, unique_pages) -> None:
     for page in unique_pages:
         body = convert_pages("content/" + page + ".md")
         template = env.get_template("about/base.j2")
@@ -21,11 +21,11 @@ def convert_unique_pages(env, unique_pages):
             f.write(template.render({'body': body}))
 
 
-def cp_static():
+def cp_static() -> None:
     shutil.copytree("./template/static", "./docs", dirs_exist_ok=True)
 
 
-def convert_articles():
+def convert_articles() -> list:
     articles_list = glob.glob("./content/articles/*")
     articles = []
     for article in articles_list:
@@ -60,7 +60,7 @@ def convert_pages(path) -> dict:
     return body
 
 
-def output_aricles_pages(env, articles):
+def output_aricles_pages(env, articles) -> None:
     output_dir = "docs/articles/"
     os.makedirs(output_dir, exist_ok=True)
     template = env.get_template("articles/base.j2")
