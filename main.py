@@ -15,12 +15,10 @@ def convert_index_page(env, articles):
 
 def convert_unique_pages(env, md, unique_pages):
     for page in unique_pages:
-        with open("content/" + page + ".md") as f:
-            s = f.read()
-            text = md.convert(s)
+        body = convert_pages("content/" + page + ".md")
         template = env.get_template("about/base.j2")
         with open("docs/" + page + ".html", mode='w') as f:
-            f.write(template.render({'body_text': text}))
+            f.write(template.render({'body': body}))
 
 
 def cp_static():

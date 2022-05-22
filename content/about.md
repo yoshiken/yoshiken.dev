@@ -3,8 +3,6 @@ Date: 2022-05-17 00:00:00
 Category: blog
 Summary: About
 
-# About
-
 ## これはなに
 
 yoshikenがプログラミングや日記、ポエムを書いていくページです。

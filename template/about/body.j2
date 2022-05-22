@@ -1,5 +1,7 @@
 <body>
   {% include "common/header.j2" %}
-  {{ body_text}}
+  <h1>{{ body.title }}</h1>
+  <time datetime="{{ body.date }}">{{ body.date.strftime('%Y-%m-%d') }}</time>
+  {{ body.text }}
   {% include "common/footer.j2" %}
 </body>
