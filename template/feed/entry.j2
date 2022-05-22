@@ -1,0 +1,11 @@
+{% for article in  articles %}
+<entry>
+  <id>{{ article.url }}</id>
+  <guid isPermaLink="true">{{ article.url }}</guid>
+  <title>{{ article.title }}</title>
+  <link>{{ article.link }}</link>
+  <link rel='alternate' type='text/html' href='{{ article.link }}' />
+  <updated>{{ article.date.isoformat() }}</updated>
+  <summary>{{ article.summary }}</summary>
+</entry>
+{% endfor %}

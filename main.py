@@ -56,6 +56,7 @@ def convert_pages(path) -> dict:
             tmp_txt += line
         body['text'] = md.convert(tmp_txt)
         body['output_file_name'] = os.path.splitext(os.path.basename(path))[0]
+        body['link'] = "https://yoshiken.dev" "/articles/" + body['output_file_name']
     return body
 
 
@@ -66,6 +67,14 @@ def output_aricles_pages(env, articles):
     for article in articles:
         with open(output_dir + article['output_file_name'] + ".html", mode='w') as f:
             f.write(template.render({'article': article}))
+
+
+def convert_feed(env, articles) -> None:
+    template = env.get_template("feed/base.j2")
+    feed = {}
+    feed['updated'] = articles[0]['date']
+    with open("docs/feed.xml", mode='w') as f:
+        f.write(template.render({'articles': articles, 'feed': feed}))
 
 
 if __name__ == "__main__":
@@ -81,3 +90,4 @@ if __name__ == "__main__":
     articles = convert_articles()
     output_aricles_pages(env, articles)
     convert_index_page(env, articles)
+    convert_feed(env, articles)
