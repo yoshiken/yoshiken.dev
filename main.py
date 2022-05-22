@@ -13,7 +13,7 @@ def convert_index_page(env, articles):
         f.write(template.render({'articles': articles}))
 
 
-def convert_unique_pages(env, md, unique_pages):
+def convert_unique_pages(env, unique_pages):
     for page in unique_pages:
         body = convert_pages("content/" + page + ".md")
         template = env.get_template("about/base.j2")
@@ -25,7 +25,7 @@ def cp_static():
     shutil.copytree("./template/static", "./docs", dirs_exist_ok=True)
 
 
-def convert_articles(md):
+def convert_articles():
     articles_list = glob.glob("./content/articles/*")
     articles = []
     for article in articles_list:
@@ -76,8 +76,8 @@ if __name__ == "__main__":
         autoescape=select_autoescape()
     )
     unique_pages = ["about", "format"]
-    convert_unique_pages(env, md, unique_pages)
+    convert_unique_pages(env, unique_pages)
     cp_static()
-    articles = convert_articles(md)
+    articles = convert_articles()
     output_aricles_pages(env, articles)
     convert_index_page(env, articles)
