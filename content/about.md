@@ -13,6 +13,8 @@ yoshikenがプログラミングや日記、ポエムを書いていくページ
 
 投稿内容は丸パクリじゃなきゃ特に問題ありません。引用や改変しての掲載は許諾も連絡も不要です。「一報くれると嬉しいな」ぐらいの温度感です。
 
+rssフィードはこちら [https://yoshiken.dev/feed.xml](https://yoshiken.dev/feed.xml)
+
 ## Me
 
 - HN: yoshiken

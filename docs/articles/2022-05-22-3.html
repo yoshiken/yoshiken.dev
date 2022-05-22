@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>rssフィード兼sitemapを追加した</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=Atom1.0、初めました。>
+  
+  <meta property="og:title" content=rssフィード兼sitemapを追加した>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=Atom1.0、初めました。>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-05-22-3>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-05-22-3>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>rssフィード兼sitemapを追加した</h1>
+    <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time>
+    <h2>X・M・L!X・M・L!</h2>
+<p>sitemapというかrssフィード欲しいなと思って作ってみた。嘘です。作ってみたかっただけです。</p>
+<p><a href="https://yoshiken.dev/feed.xml">https://yoshiken.dev/feed.xml</a></p>
+<p>正直色んなサイトのAtom1.0見ても書いてあることバラバラで最終的にこちらのサイトを参考にした</p>
+<p><a href="https://txqz.net/memo/2007-0603-2352.html">Atom1.0仕様メモ (2007-06-03)</a></p>
+<p>そんでもってGitHub Actionsで更新差分あったらpingで更新的な感じで。</p>
+<pre><code>name: push-google-sitemap
+on:
+  push:
+    path:
+      - 'docs/feed.xml'
+jobs:
+  push-google-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -X GET &quot;https://www.google.com/ping?sitemap=https://yoshiken.dev/feed.xml&quot;
+</code></pre>
+<p>シュッと最小ミニマム構成</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
