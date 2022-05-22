@@ -31,30 +31,34 @@ def convert_articles(md):
     articles_list = glob.glob("./content/articles/*")
     articles = []
     for article in articles_list:
-        tmp_txt = ""
-        with open(article) as f:
-            body = {}
-            lines = f.readlines()
-            for line in lines:
-                if line.startswith("Title:"):
-                    body['title'] = re.sub('^Title: ', "", line).replace('\n', '')
-                    continue
-                if line.startswith("Date:"):
-                    date_str = re.sub('^Date: ', "", line).replace('\n', '')
-                    body['date'] = datetime.strptime(date_str + '+09:00', '%Y-%m-%d %H:%M:%S%z')
-                    continue
-                if line.startswith("Summary:"):
-                    body['summary'] = re.sub('^Summary: ', "", line).replace('\n', '')
-                    continue
-                if line.startswith("Category:"):
-                    body['category'] = re.sub('^Category: ', "", line).replace('\n', '')
-                    continue
-                tmp_txt += line
-            body['text'] = md.convert(tmp_txt)
-            body['output_file_name'] = os.path.splitext(os.path.basename(article))[0]
-            articles.append(body)
+        articles.append(convert_pages(article))
     sorted_articles = sorted(articles, key=lambda x: x['date'], reverse=True)
     return sorted_articles
+
+
+def convert_pages(path) -> dict:
+    tmp_txt = ""
+    body = {}
+    with open(path) as f:
+        lines = f.readlines()
+        for line in lines:
+            if line.startswith("Title:"):
+                body['title'] = re.sub('^Title: ', "", line).replace('\n', '')
+                continue
+            if line.startswith("Date:"):
+                date_str = re.sub('^Date: ', "", line).replace('\n', '')
+                body['date'] = datetime.strptime(date_str + '+09:00', '%Y-%m-%d %H:%M:%S%z')
+                continue
+            if line.startswith("Summary:"):
+                body['summary'] = re.sub('^Summary: ', "", line).replace('\n', '')
+                continue
+            if line.startswith("Category:"):
+                body['category'] = re.sub('^Category: ', "", line).replace('\n', '')
+                continue
+            tmp_txt += line
+        body['text'] = md.convert(tmp_txt)
+        body['output_file_name'] = os.path.splitext(os.path.basename(path))[0]
+    return body
 
 
 def output_aricles_pages(env, articles):
