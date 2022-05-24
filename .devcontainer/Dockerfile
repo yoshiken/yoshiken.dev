@@ -1,1 +1,1 @@
-FROM yoshiken/yoshiken.dev.python:latest
+FROM mcr.microsoft.com/vscode/devcontainers/universal:1-linux
