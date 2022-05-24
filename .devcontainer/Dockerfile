@@ -1,1 +1,1 @@
-FROM ghcr.io/yoshiken/yoshiken_dev_blog:latest
+FROM yoshiken/yoshiken.dev.python:latest
