@@ -1,0 +1,7 @@
+{
+  "name": "yoshken.dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+  },
+  "remoteUser": "vscode"
+}
