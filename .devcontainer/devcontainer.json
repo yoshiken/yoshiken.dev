@@ -1,7 +1,7 @@
 {
   "name": "yoshken.dev",
   "build": {
-    "dockerfile": "Dockerfile.ghcr",
+    "dockerfile": "base.Dockerfile",
   },
   // Configure tool-specific properties.
   "customizations": {
