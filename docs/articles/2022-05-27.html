@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>自宅サーバーモニタリング in Grafana cloud</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=Grafana cloud便利ですね>
+  
+  <meta property="og:title" content=自宅サーバーモニタリング in Grafana cloud>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=Grafana cloud便利ですね>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-05-27>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-05-27>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>自宅サーバーモニタリング in Grafana cloud</h1>
+    <time datetime="2022-05-25 00:19:44+09:00">2022-05-25</time>
+    <h2>日本語ドキュメントがすくねぇ！</h2>
+<p>自宅にArkのサーバーを建てた。IPv6プラスだったので色々めんどくさかったので後日書きます。</p>
+<p>でついでなのでそのサーバーの監視したいなーと思って前に登録してたGrafana Cloud使ってみるかということでやってみた</p>
+<p>登録とかはskip</p>
+<p>Integrations and Connections &gt; Linux Serverを選択</p>
+<p><img src="https://i.imgur.com/SZac75E.png" alt=""></p>
+<p>手順が書いてあるのでサクッと実行
+<img src="https://i.imgur.com/KEpaL3n.png" alt=""></p>
+<p><code>sudo systemctl status grafana-agent.service</code></p>
+<p>したらGrafana Cloudに諸々がpushされるのでちょっと時間経てばいい感じにダッシュボードが表示される</p>
+<p><img src="https://i.imgur.com/2zkdAwo.png" alt=""></p>
+<p>Ark Serverメモリ食いすぎワロタ。(サーバーの元は8GB</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>

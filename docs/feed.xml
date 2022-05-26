@@ -15,6 +15,15 @@
 </entry>
 
 <entry>
+  <id>https://yoshiken.dev/articles/2022-05-27</id>
+  <guid isPermaLink="true">https://yoshiken.dev/articles/2022-05-27</guid>
+  <title>自宅サーバーモニタリング in Grafana cloud</title>
+  <link rel='alternate' type='text/html' href='https://yoshiken.dev/articles/2022-05-27' />
+  <updated>2022-05-25T00:19:44+09:00</updated>
+  <summary>Grafana cloud便利ですね</summary>
+</entry>
+
+<entry>
   <id>https://yoshiken.dev/articles/2022-05-22-3</id>
   <guid isPermaLink="true">https://yoshiken.dev/articles/2022-05-22-3</guid>
   <title>rssフィード兼sitemapを追加した</title>
