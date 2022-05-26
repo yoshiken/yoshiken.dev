@@ -7,4 +7,5 @@ jobs:
   push-google-sitemap:
     runs-on: ubuntu-latest
     steps:
+      - run: sleep 60
       - run: curl -X GET "https://www.google.com/ping?sitemap=https://yoshiken.dev/feed.xml"
