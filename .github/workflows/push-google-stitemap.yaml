@@ -1,8 +1,7 @@
 name: push-google-sitemap
 on:
-  push:
-    path:
-      - 'docs/feed.xml'
+  schedule:
+      - cron: '* 0 * * *'
 jobs:
   push-google-sitemap:
     runs-on: ubuntu-latest
