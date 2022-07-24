@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=一度にやるべきでは無かったのかもしれないけどめんどくさかったのでやったら余計めんどくさくなった>
+  
+  <meta property="og:title" content=AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=一度にやるべきでは無かったのかもしれないけどめんどくさかったのでやったら余計めんどくさくなった>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-07-24>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-07-24>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</h1>
+    <time datetime="2022-07-24 23:22:49+09:00">2022-07-24</time>
+    <h2>AWS ALB Ingress Controller to AWS Load Balancer Controller自体は割りと簡単</h2>
+<h3>前提</h3>
+<p>現在面倒をみているプロダクトがEKSv1.19→v1.21にアップデートをした。事業部専属というわけではなくてSREとして別プロダクトばっかりみてたらサポート残り1ヶ月の状態で「あ、やべ。残り一ヶ月でEKS強制アプデ入るわ」となり、やらなくては～となったがプロダクトのフロントエンドの子が「やってみたいです！」というので他のレイヤーに対する熱意◎でまかせたら、会社都合でその子が部署異動で「開発環境はアプデ終わりましたが本番はできませんでした…後はよろしくお願いいたします…」とバトンを渡され虚構に陥りながら開発のリハ無しに本番のアップデートをした。まぁよくある話っすね</p>
+<p>基本的には弊社のSREの方針としては運用は各事業部に任せることが前提とはいいつつほぼほぼノールックだったのは反省点。</p>
+<p>で、昔に1.19に上げた時に各APIリソースのアップデートもそこまでしておらず、残り時間と加味してリソースのアップデートの検証もできなかったので最新の1.22ではなく現行のリソースで最大ギリアップデート可能な1.21にした。</p>
+<p>1.22のアップデートに向けて早めに手を打とうとAPIリソースのアップデートを隙あらばやっていたが、ALB Ingress ControllerがAWS Load Balancer Controllerというものに変わるらしく、今まで地味に不便だった1service⇔1ELBをNservice⇔1ELBにできるのでついでにやってしまおう。そう、ダウンタイムゼロで。</p>
+<p>という前提の元、話を進めていきます。</p>
+<h3>まずはともあれIngressのアップデート</h3>
+<p><code>extensions/v1beta1</code> から <code>networking.k8s.io/v1</code> にアップデートしないと1.22にアップデートできないうえ、AWS Load Balancer Controllerが使えない。</p>
+<p>と言うこと自体簡単だが地味にハマるポイントがあり、k8s公式ドキュメントのパスタイプを見ると <code>/</code> ですべてのリクエストを受け入れる設定になる。</p>
+<p>https://kubernetes.io/ja/docs/concepts/services-networking/ingress/#%E3%83%91%E3%82%B9%E3%81%AE%E3%82%BF%E3%82%A4%E3%83%97</p>
+<p>だがAWS ALB Ingress Controllerは <code>/*</code> じゃないとすべてのリクエストを受け入れてくれないわけですよ。</p>
+<p>なので公式ドキュメントどおりに <code>/</code> にすると <code>/</code> しか受け付けないELBが爆誕します。 (e.g. example.com は受け付けるが exmaple.com/hoge は受け付けなくなる</p>
+<p>ぐっとこらえて <code>/*</code> のままアップデートしましょう</p>
+<p>サンプルコードはこんな感じです</p>
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example.ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{&quot;HTTP&quot;: 80}, {&quot;HTTPS&quot;: 443}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:123456789:certificate/hogehogehoge-fugafugafuga-piyopiyopiyopiyo-poyopoyopoyopoyo-pukapukapuka
+spec:
+  rules:
+    - host: &quot;example.com&quot;
+      http:
+        paths:
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: ssl-redirect
+                port:
+                  name: use-annotation
+          - path: /*
+            pathType: Prefix
+            backend:
+              service:
+                name: example-service
+                port:
+                  number: 80
+
+</code></pre>
+<p><code>rules</code> 配下の <code>host</code> は必須かと言われると必須ではないんですが、AWS Load Balancer ControllerでELBまとめるときに必要なので今のうちに書いておくと忘れなくて良いです。</p>
+<h3>AWS Load Balancer Controller インストール</h3>
+<p>基本的に公式ドキュメント通りにやれば問題ないです。(それはそう</p>
+<p>ただPolicy作成時に既存リソースを破壊させないようにちょこっと弄る必要があります</p>
+<p>流れは</p>
+<ol>
+<li>EKSのOIDC発行(すでに発行済みならスルー</li>
+<li>AWS Load Balancer Controller用のIAM policyを公式ドキュメントどおりにDL</li>
+<li>既存リソースを破壊しないように弄る *1</li>
+<li>Policy作成</li>
+<li>AWS Load Balancer Controller用のIAM作成</li>
+<li>AWS ALB Ingress Controllerの削除</li>
+<li>AWS Load Balancer Controllerをインストール(fargate化を少しでも考えてるなら大人しくhelmにしましょう</li>
+</ol>
+<p>こんな感じ。</p>
+<p>んで、普通に公式ドキュメントどおりにやるとAWS ALB Ingress Controllerで作成されたリソースを書き換えようとするんですが、今回は既存リソースをそのままにしたかったのでちょこっとPolicyをいじります。</p>
+<p>公式の</p>
+<p><code>curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.2/docs/install/iam_policy.json</code></p>
+<p>となっているPolicyに次のような感じで追加します</p>
+<pre><code>&quot;Condition&quot;: {
+    &quot;Null&quot;: {
+        &quot;aws:ResourceTag/kubernetes.io/cluster/CLUSTER-NAME&quot;: &quot;false&quot;
+    }
+}
+</code></pre>
+<p>これで既存リソースはいじられないようになります(たぶん</p>
+<p>意味は「aws policy Condition」あたりでぐぐってください</p>
+<h3>まとめたELBを作成</h3>
+<p>簡単！ <code>annotations</code> に <code>alb.ingress.kubernetes.io/group.name</code> 追加するだけ！！！！！！！！！！</p>
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mamadays.server.loadbalancer
+  annotations:
+    alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=elb-log-s3-bucket,access_logs.s3.prefix=log-s3-prefix
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-1:123456789:certificate/hogehogehoge-fugafugafuga-piyopiyopiyopiyo-poyopoyopoyopoyo-pukapukapuka
+    alb.ingress.kubernetes.io/group.name: matometa-elb
+</code></pre>
+<p>正直開発環境のELBが無駄に立ち上がってるのは地味に費用面でイラッとしてたので助かる。</p>
+<p>一応デメリットがあって、今のところlogのs3のprefixがserviceで分けられないので面倒ではある。</p>
+<p>弊社だとelbのlogはs3に置いて、athenaで分析してるんですがscan量増えて料金増えるな～と思いつつ減らしたELB分考えれば＋かなと判断してやってます。</p>
+<p>ちなみにさっきの <code>rules</code> 配下の <code>host</code> にhostname書いておかないと大惨事になりますのでちゃんとつけましょう</p>
+<h3>route53で切り替え</h3>
+<p>これで AWS ALB Ingress Controllerで作成されたELBsとAWS Load Balancer Controllerで作成されたまとめられたELBが立っているのでroute53の加重ルーティングあたりで切り替えていきましょう。</p>
+<h3>FAQ</h3>
+<p>自分で疑問に思ったり同僚に質問されたこと</p>
+<p>Q. AWS ALB Ingress Controller消したら既存のELBとか削除されないの？</p>
+<p>A. あいつらの仕事はkind Ingressを監視してリソースの追加と削除するだけで、作ったリソース自体を常時監視している(紐づいている)わけではないので問題なし</p>
+<p>Q. kustomizeで管理してるからmanifestで管理したいんだけど。</p>
+<p>A. https://github.com/jetstack/cert-manager/releases/download/v1.5.4/cert-manager.yaml と https://github.com/kubernetes-sigs/aws-load-balancer-controller/releases/download/v2.4.2/v2_4_2_full.yaml を見て「管理できる！」って自信持ったらやってください。僕は諦めました。あとfargate対応考えるとねぇ。</p>
+<p>Q. なんかAWS ALB Ingress Controllerで作成されたingressが消せないんだけど。消せないっていうかレスポンス帰ってこないんだけど。</p>
+<p>A. わかる。僕も半日ぐらい潰れました</p>
+<p>結論から言うと <code>finalizers</code> をemptyにするとOK</p>
+<p>簡単にいうと旧ingressが無のfinalizersを掴んでて、旧ingressを消そうとすると、旧ingressが「無を消してからワイ消えますわ！」って状態になり無は無なので無を消せずにレスポンス帰ってこないってわけです。</p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/95983">https://github.com/kubernetes/kubernetes/issues/95983</a></p>
+<p>なんで、finalizersを空で上書きすることで「ワイ何も持ってないのでそのまま消えますね～」って感じで消えてくれる</p>
+<p>一応 <code>-wait false</code> つければレスポンス待たずに消えるらしいのでお好みで。</p>
+<p>ちなみにsystem:admin権限でも消せなかったので特級呪物って呼んでました</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
