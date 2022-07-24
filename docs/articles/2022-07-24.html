@@ -155,6 +155,13 @@ metadata:
 <p>簡単にいうと旧ingressが無のfinalizersを掴んでて、旧ingressを消そうとすると、旧ingressが「無を消してからワイ消えますわ！」って状態になり無は無なので無を消せずにレスポンス帰ってこないってわけです。</p>
 <p><a href="https://github.com/kubernetes/kubernetes/issues/95983">https://github.com/kubernetes/kubernetes/issues/95983</a></p>
 <p>なんで、finalizersを空で上書きすることで「ワイ何も持ってないのでそのまま消えますね～」って感じで消えてくれる</p>
+<pre><code>$kubectl get ingress [ingress-loadbalancername] -o yaml -n development
+(略)
+finalizers:
+  - ingress.k8s.aws/resources
+(略)
+</code></pre>
+<p>みたいな感じで残ってるので <code>$kubectl patch ingress [ingress-loadbalancername] -n development -p '{"metadata":{"finalizers":[]}}' --type=merge</code> おりゃ！ってすればemptyで上書きします。</p>
 <p>一応 <code>-wait false</code> つければレスポンス待たずに消えるらしいのでお好みで。</p>
 <p>ちなみにsystem:admin権限でも消せなかったので特級呪物って呼んでました</p>
   </article>
