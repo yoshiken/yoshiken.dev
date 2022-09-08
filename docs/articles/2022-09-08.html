@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>90日後に死んだEKS</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=EKS1.21以上にすると90日後にサービスアカウントトークンの有効期限が来て死ぬ>
+  
+  <meta property="og:title" content=90日後に死んだEKS>
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content=EKS1.21以上にすると90日後にサービスアカウントトークンの有効期限が来て死ぬ>
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content=article>
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content=https://yoshiken.dev/articles/2022-09-08>
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2022-09-08>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>90日後に死んだEKS</h1>
+    <time datetime="2022-09-08 14:59:36+09:00">2022-09-08</time>
+    <h2>EKS1.21以上にすると90日後にサービスアカウントトークンの有効期限が来て死ぬ</h2>
+<h3>TL;DR</h3>
+<ul>
+<li>KubernetesのBoundServiceAccountTokenVolumeにサービスアカウントトークンの有効期限が導入された</li>
+<li>EKS1.21から上記機能がデフォルトで有効になっている</li>
+<li>kube2iamやK8s-External-Secretなどで古いやつ使ってると90日後に有効期限が切れてサービスが死ぬ</li>
+</ul>
+<h3>何が起きたか</h3>
+<p>唐突に9/6以降のcron job達がクレデンシャルを取得できずに死んでいった。</p>
+<p>不幸中の幸いでメインのサービスのserverは諸々の事情があってクレデンシャルはkube2iamで取得していなかったのでメインサービス自体は死ななかっった。</p>
+<h3>調査</h3>
+<p>とりあえず困ったらlogを見る。大事。</p>
+<p>以下のlogが発見できクレデンシャル周りを疑う</p>
+<pre><code>failed fetch events: NoCredentialProviders: no valid providers in chain. Deprecated.\\\\n\\\\tFor verbose messaging see aws.Config.CredentialsChainVerboseErrors
+</code></pre>
+<p>最初はk8sの証明書周りが取得できないのかと思っていたが(前科あり)、問題なさそう。</p>
+<p>AWS固有のクレデンシャル、つまりはIAM周りが怪しいのでは？とkub2iamのlogを見たら以下のlog</p>
+<pre><code>&quot;E0905 16:42:08.534890       1 reflector.go:300] github.com/jtblin/kube2iam/vendor/k8s.io/client-go/tools/cache/reflector.go:94: Failed to watch *v1.Namespace: the server has asked for the client to provide credentials (get namespaces)\n&quot;
+</code></pre>
+<p>つまりは <strong>各podにIAMを割り振りするkube2iam自体がクレデンシャルを取得できない</strong> ということ。</p>
+<p>kube2iamって何やねんって話はここではしないのでgithubでも見てくれ。</p>
+<p><a href="https://github.com/jtblin/kube2iam">https://github.com/jtblin/kube2iam</a></p>
+<h3>特定</h3>
+<p>エラー文で検索してもいまいちピンとくる解決法が見当たらない。最近kube2iam周りも触った記憶も記録もない。</p>
+<p>で、「もしかしたらAWSコンソール画面にヒントとかないかな〜。流石にご都合主義かな〜。」と見に行ったらあった。</p>
+<blockquote>
+<p>Kubernetes BoundServiceAccountTokenVolume 機能 では、サービスアカウントトークンの有効期限が導入されました。この機能は EKS v1.21 以降のクラスターでデフォルトで有効になっています。API サーバーのリクエストエラーを回避するには、アプリケーションの依存関係を更新してサービスアカウントトークンを再取得する必要があります。</p>
+</blockquote>
+<p>あーたしかにトークン切れたら出そうなエラーだな〜。でも最近式年遷宮したし可能性が低いかな〜。とか思いつつ少し深堀りした。</p>
+<p>("式年遷宮"とは俗に言うClusterMigrationと呼ばれるやつで詳しくは<a href="https://speakerdeck.com/yoshiken/zhuan-sheng-sitaraekswoterraformguan-li-surukotoninatutajian?slide=17">過去に登壇したスライド</a>見てくれ</p>
+<p><a href="https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#kubernetes-1.21">https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html#kubernetes-1.21</a></p>
+<blockquote>
+<p>BoundServiceAccountTokenVolume graduated to beta and is enabled by default in Kubernetes version 1.21. This feature improves security of service account tokens by allowing workloads running on Kubernetes to request JSON web tokens that are audience, time, and key bound. Service account tokens now have an expiration of one hour. In previous Kubernetes versions, they didn't have an expiration. This means that clients that rely on these tokens must refresh the tokens within an hour.
+(中略)
+If your workload is using an older client version, then you must update it. To enable a smooth migration of clients to the newer time-bound service account tokens, Kubernetes version 1.21 adds an extended expiry period to the service account token over the default one hour. For Amazon EKS clusters, the extended expiry period is 90 days. Your Amazon EKS cluster's Kubernetes API server rejects requests with tokens older than 90 days. We recommend that you check your applications and their dependencies to make sure that the Kubernetes client SDKs are the same or later than the versions listed previously.</p>
+</blockquote>
+<p>え"</p>
+<blockquote>
+<p>For Amazon EKS clusters, the extended expiry period is 90 days. Your Amazon EKS cluster's Kubernetes API server rejects requests with tokens older than 90 days.</p>
+</blockquote>
+<p>🤔</p>
+<p>🤔🤔🤔🤔🤔🤔🤔🤔</p>
+<pre><code class="language-bash">$aws eks describe-cluster --name xxxxxxxxxxxx --query &quot;cluster.createdAt&quot; --output text
+2022-06-06T22:29:01.251000+09:00
+$kubectl get pod -n kube-system
+NAME                                            READY   STATUS    RESTARTS   AGE
+aws-load-balancer-controller-xxxxxxxxxxxxxxxx   1/1     Running   0          23h
+aws-load-balancer-controller-xxxxxxxxxxxxxxxx   1/1     Running   0          23h
+aws-node-xxxxx                                  1/1     Running   0          93d
+aws-node-xxxxx                                  1/1     Running   0          93d
+coredns-xxxxxxxxxx-xxxxx                        1/1     Running   0          93d
+coredns-xxxxxxxxxx-xxxxx                        1/1     Running   0          93d
+kube-proxy-xxxxx                                1/1     Running   0          93d
+kube-proxy-xxxxx                                1/1     Running   0          93d
+kube2iam-xxxxx                                  1/1     Running   0          93d
+kube2iam-xxxxx                                  1/1     Running   0          93d
+kubernetes-external-secrets-xxxxxxxxxxxxxxx     1/1     Running   2          92d
+</code></pre>
+<p>今日は9/8</p>
+<p>障害は9/6</p>
+<p>EKS及びkube2iam作成は6/6</p>
+<p>もろに90日後やんけ!!!!!!!!!!!!!!!!!</p>
+<h3>対応</h3>
+<p>他にもサービスアカウントのtoken切れがいないか以下のクエリをCloudWatch Logs Insightsでコントロールプレーンのログで走らせる。弊社の場合しれっとkubernetes-external-secretsも死んでいた。(kube2iamもそうなんだが完全に死んでいるわけではなくたまにクレデンシャルが取れているときがあるのは結局謎だった</p>
+<pre><code>fields @timestamp
+| filter @logStream like /kube-apiserver-audit/
+| filter @message like /seconds after warning threshold/
+| parse @message &quot;subject: *, seconds after warning threshold:*\&quot;&quot; as subject, elapsedtime
+</code></pre>
+<p>もとより諸々のAPIやらmoduleが古いので最新にする予定だったが今回の障害で優先順位が上がった。</p>
+<p>とりあえずの対応として新たにサービスアカウントのトークンさえ発行できればええんやろ精神で再起動でトークンを発行し直して、90日後のgoogleCalendarに予定を入れた。</p>
+<pre><code class="language-bash">$kubectl rollout restart daemonset kube2iam -n kube-system
+$kubectl rollout restart deploy kubernetes-external-secrets -n kube-system
+</code></pre>
+<h3>まとめ</h3>
+<p>本質的なところは<a href="https://yoshiken.dev/articles/2022-07-24">前の記事でも書いた</a>が、EKSアップデートの引き継ぎが中途半端だったというところに起因してしまう。</p>
+<p>それでも強いて言うなら</p>
+<p>パッチノートに赤文字で <code>Important</code> って書いてあるやつはちゃんと見ましょう。</p>
+<p>AWSコンソール画面はチラチラ見にいきましょう。</p>
+<p>アップデートはこまめにしましょう。</p>
+<p>以上3点。得るものは少なった。リカバリーの工数は多かった。</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
