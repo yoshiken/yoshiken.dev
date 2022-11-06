@@ -45,7 +45,9 @@
     "--security-opt",
     "seccomp=unconfined",
     "--privileged",
-    "--init"
+    "--init",
+    "-u",
+    "vscode"
   ],
   "postCreateCommand": "oryx build -p virtualenv_name=.venv --log-file /tmp/oryx-build.log --manifest-dir /tmp || echo 'Could not auto-build. Skipping.'"
 }
