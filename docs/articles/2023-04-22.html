@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>Flutter2.xでWindowsで動くGUIアプリを付くときにあれこれ</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <!-- Thank you https://github.com/kevquirk/simple.css -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    a {
+      word-wrap:break-word;
+    }
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=flutterでwindowsアプリ作る人少なすぎて困るし、テキトーばっかり。>
+  
+  <meta property="og:title" content="Flutter2.xでWindowsで動くGUIアプリを付くときにあれこれ">
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content="flutterでwindowsアプリ作る人少なすぎて困るし、テキトーばっかり。">
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://yoshiken.dev/articles/2023-04-22">
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2023-04-22>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <header>
+      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
+      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+</header>
+  <article>
+    <h1>Flutter2.xでWindowsで動くGUIアプリを付くときにあれこれ</h1>
+    <time datetime="2023-04-22 14:12:00+09:00">2023-04-22</time>
+    <h2>日本語ドキュメントねぇんだなこれがまた（いつもそう）</h2>
+<h3>作ったもの</h3>
+<p>友人のイベントの手伝いの一環でwindowsのパッチパネルで動くレジを作ることになったので、どうせならと思ってflutterで作った。</p>
+<p><a href="https://github.com/yoshiken/flutter_cash_register">https://github.com/yoshiken/flutter_cash_register</a></p>
+<p>windowsでしか使う予定無いのに無駄にflutterで作ったのはオーバーエンジニアリングが趣味なもんで…</p>
+<h3>windowsビルドするときは諸々追加しないといけない</h3>
+<p>flutterでwindowsアプリを作るときは、windowsのビルド環境が必要になる。それはそう。</p>
+<p>なんかAndroid Studioインストールしてる記事いっぱいありますが不要です。</p>
+<p>で、結論からいうと何が必要かというとVisual Studio 2022 または Visual Studio Build Tools 2022が必要。</p>
+<p>公式ドキュメントの一番下に書かれて2・3日見逃した…</p>
+<p><a href="https://docs.flutter.dev/get-started/install/windows#windows-setup">https://docs.flutter.dev/get-started/install/windows#windows-setup</a></p>
+<p>で、 <code>flutter config --enable-windows-desktop</code> でwindowsのビルド環境を有効にすれば、 <code>flutter build windows</code> でビルドできるようになる。</p>
+  </article>
+  <footer>
+  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+</footer>
+</body>
