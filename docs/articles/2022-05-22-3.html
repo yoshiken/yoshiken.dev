@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=Atom1.0、初めました。>
   
@@ -47,14 +52,28 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <article>
-    <h1>rssフィード兼sitemapを追加した</h1>
-    <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time>
-    <h2>X・M・L!X・M・L!</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>rssフィード兼sitemapを追加した</h1>
+          <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time>
+          </p>
+          <h2>X・M・L!X・M・L!</h2>
 <p>sitemapというかrssフィード欲しいなと思って作ってみた。嘘です。作ってみたかっただけです。</p>
 <p><a href="https://yoshiken.dev/feed.xml">https://yoshiken.dev/feed.xml</a></p>
 <p>正直色んなサイトのAtom1.0見ても書いてあることバラバラで最終的にこちらのサイトを参考にした</p>
@@ -72,8 +91,17 @@ jobs:
       - run: curl -X GET &quot;https://www.google.com/ping?sitemap=https://yoshiken.dev/feed.xml&quot;
 </code></pre>
 <p>シュッと最小ミニマム構成</p>
-  </article>
+        </article>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>

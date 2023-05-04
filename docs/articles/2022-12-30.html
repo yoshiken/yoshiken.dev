@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=色々ありましたねぇ>
   
@@ -47,14 +52,28 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <article>
-    <h1>2022年まとめ</h1>
-    <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time>
-    <h2>久々にGolang書いたり、マネージメントしたり、オンサイトカンファレンス運営したり</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>2022年まとめ</h1>
+          <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time>
+          </p>
+          <h2>久々にGolang書いたり、マネージメントしたり、オンサイトカンファレンス運営したり</h2>
 <h3>お仕事</h3>
 <p>今年は</p>
 <p>SRE専任→主務プロダクト開発 兼務SRE→主務プロダクト開発マネージャー 兼務SRE</p>
@@ -84,8 +103,17 @@
 <p>そして、コロナでやや疎遠気味になってしまった友人たちと酒を交わしたいですね。</p>
 <h3>〆</h3>
 <p>本年も誠にありがとうございました。来年もよろしくおねがいします。</p>
-  </article>
+        </article>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>

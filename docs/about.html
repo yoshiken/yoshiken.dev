@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=yoshikenがプログラミングや日記、ポエムを書いていくページです。>
   
@@ -47,13 +52,26 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <h1>About</h1>
-  <time datetime="2022-05-17 00:00:00+09:00">2022-05-17</time>
-  <h2>これはなに</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <p>
+        <h1>About</h1>
+        <time datetime="2022-05-17 00:00:00+09:00">2022-05-17</time>
+        <h2>これはなに</h2>
 <p>yoshikenがプログラミングや日記、ポエムを書いていくページです。</p>
 <p>別に毎日更新とか圧倒的説明とか意識高い系ではなく思考の垂れ流しです。</p>
 <p>ソースコードは <a href="https://github.com/yoshiken/yoshiken.dev">https://github.com/yoshiken/yoshiken.dev</a> に置いてあります。</p>
@@ -75,7 +93,17 @@
 <p><a href="https://twitter.com/yoshiken_tut">Twitter</a>か<a href="https://forms.gle/HvXBKrz85BFaduCx8">こちらのフォーム</a>まで。</p>
 <h2>CONTRIBUTING</h2>
 <p>issue作ってくれると助かります。めんどくさいときはTwitterあたりでリプライください。</p>
+        </p>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>

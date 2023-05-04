@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=やっぱ人がいっぱいいるオンサイトいいっすね～>
   
@@ -47,14 +52,28 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <article>
-    <h1>PyConJP 2022 スタッフしてきました。</h1>
-    <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time>
-    <h2>やっぱ人がいっぱいいるオンサイトいいっすね～</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>PyConJP 2022 スタッフしてきました。</h1>
+          <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time>
+          </p>
+          <h2>やっぱ人がいっぱいいるオンサイトいいっすね～</h2>
 <p>注: これは個人のBlogですのでPyConJPの公式な見解ではありません。公式な見解は<a href="https://pyconjp.blogspot.com/">PyConJP公式blog</a>を御覧ください。</p>
 <h3>お前誰</h3>
 <p>一応今回スタッフをやっていた吉田健太 a.k.a. yoshikenです。</p>
@@ -94,8 +113,17 @@
 <p><a href="https://corp.every.tv/">株式会社エブリー｜every, Inc.</a></p>
 <h4>感謝だが…</h4>
 <p>役職がポンポン変わって、オンサイトが当分なかったもんだから名刺の交換サボってたせいで名刺渡すたびに「今現在だとこの名刺の役職は1mmも関係ないのですが…」ってめんどくさくなったので、名刺を更新したい気持ちとどうせまた役職変わるんだろうなぁという気持ちがせめぎ合っている…</p>
-  </article>
+        </article>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>
