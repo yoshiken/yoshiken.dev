@@ -88,7 +88,7 @@
 <p>なので公式ドキュメントどおりに <code>/</code> にすると <code>/</code> しか受け付けないELBが爆誕します。 (e.g. example.com は受け付けるが exmaple.com/hoge は受け付けなくなる</p>
 <p>ぐっとこらえて <code>/*</code> のままアップデートしましょう</p>
 <p>サンプルコードはこんな感じです</p>
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+<pre class="code"><code class="language-yaml">apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example.ingress
@@ -137,17 +137,22 @@ spec:
 <p>公式の</p>
 <p><code>curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.2/docs/install/iam_policy.json</code></p>
 <p>となっているPolicyに次のような感じで追加します</p>
-<pre><code>&quot;Condition&quot;: {
-    &quot;Null&quot;: {
-        &quot;aws:ResourceTag/kubernetes.io/cluster/CLUSTER-NAME&quot;: &quot;false&quot;
+<p>``` [ .json .code]
+"Condition": {
+    "Null": {
+        "aws:ResourceTag/kubernetes.io/cluster/CLUSTER-NAME": "false"
     }
-}
-</code></pre>
-<p>これで既存リソースはいじられないようになります(たぶん</p>
-<p>意味は「aws policy Condition」あたりでぐぐってください</p>
-<h3>まとめたELBを作成</h3>
-<p>簡単！ <code>annotations</code> に <code>alb.ingress.kubernetes.io/group.name</code> 追加するだけ！！！！！！！！！！</p>
-<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+}</p>
+<pre><code>これで既存リソースはいじられないようになります(たぶん
+
+意味は「aws policy Condition」あたりでぐぐってください
+
+### まとめたELBを作成
+
+簡単！ `annotations` に `alb.ingress.kubernetes.io/group.name` 追加するだけ！！！！！！！！！！
+
+```{ .yaml .code }
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mamadays.server.loadbalancer
@@ -174,7 +179,7 @@ metadata:
 <p>簡単にいうと旧ingressが無のfinalizersを掴んでて、旧ingressを消そうとすると、旧ingressが「無を消してからワイ消えますわ！」って状態になり無は無なので無を消せずにレスポンス帰ってこないってわけです。</p>
 <p><a href="https://github.com/kubernetes/kubernetes/issues/95983">https://github.com/kubernetes/kubernetes/issues/95983</a></p>
 <p>なんで、finalizersを空で上書きすることで「ワイ何も持ってないのでそのまま消えますね～」って感じで消えてくれる</p>
-<pre><code>$kubectl get ingress [ingress-loadbalancername] -o yaml -n development
+<pre><code class="language-code">$kubectl get ingress [ingress-loadbalancername] -o yaml -n development
 (略)
 finalizers:
   - ingress.k8s.aws/resources

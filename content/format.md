@@ -38,13 +38,13 @@ Horizontal rules
 
 `Code spans`
 
-```
+```{ .code }
 Code blocks
 ```
 
 <details>
 <summary>summary</summary>
-```
+```{ .code }
 import this
 ```
 </details>

@@ -77,7 +77,7 @@
 <p><a href="https://yoshiken.dev/articles/2022-05-22">Pythonのdatetime型におけるTZの難しさ。</a> でうーんうーん悩んで <code>2022-05-22T01:53:00+09:00</code> って書く結論になったけど、寝て起きたらいや、別に <code>2022-05-22 11:55:00</code> って書いてpythonでconvertするときに諸々追加してあげればええやんという結論で既存の書き方で良くなった。</p>
 <p>やっぱ煮詰まったときは寝るに限る。</p>
 <p>実際の処理はこんな感じ</p>
-<pre><code>if line.startswith(&quot;Date:&quot;):
+<pre class="code"><code class="language-python">if line.startswith(&quot;Date:&quot;):
     date_str = re.sub('^Date: ', &quot;&quot;, line).replace('\n', '')
     body['date'] = datetime.strptime(date_str + '+09:00', '%Y-%m-%d %H:%M:%S%z')
     print(body['date'].tzinfo)
@@ -86,7 +86,7 @@
 </code></pre>
 <p>いまのところこのblogはJSTで統一するつもりだからDateで渡された文字列に <code>+ '+09:00'</code> してあげればいいだけっていう簡単な話</p>
 <p>で出力は</p>
-<pre><code>UTC+09:00
+<pre><code class="language-code">UTC+09:00
 2022-05-22 11:55:00+09:00
 &lt;class 'datetime.datetime'&gt;
 </code></pre>

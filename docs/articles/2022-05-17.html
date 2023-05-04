@@ -86,7 +86,7 @@
 <h2>余談</h2>
 <p>基本的にショットで使ったり簡単なchatbotは仕事でもpythonで書くことが多いけど知識のアップデートを怠っていたせいでびっくりすることがある。</p>
 <p>例えば昔はpythonでフォルダ作るときは</p>
-<pre><code class="language-python">try:
+<pre class="code"><code class="language-python">try:
     os.makedirs(new_dir_path)
 except FileExistsError:
     pass
@@ -96,7 +96,7 @@ if not os.path.isdir(path):
     os.makedirs(path)
 </code></pre>
 <p>みたいに書いてたけど3.2以降は</p>
-<pre><code class="language-python">os.makedirs(path, exist_ok=True)
+<pre class="code"><code class="language-python">os.makedirs(path, exist_ok=True)
 </code></pre>
 <p>でいいのね。やっぱり定期的な知識のアップデート大事。けどパッチノート読む時間も無い。</p>
 <p>そんなときに最近使い始めたGitHub Copilotがすげー役に立った。「あれ？僕よりコードうまくない？僕いる？」ってなってしまった。</p>

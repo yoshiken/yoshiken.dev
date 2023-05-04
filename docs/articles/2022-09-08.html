@@ -115,7 +115,7 @@ If your workload is using an older client version, then you must update it. To e
 </blockquote>
 <p>🤔</p>
 <p>🤔🤔🤔🤔🤔🤔🤔🤔</p>
-<pre><code class="language-bash">$aws eks describe-cluster --name xxxxxxxxxxxx --query &quot;cluster.createdAt&quot; --output text
+<pre class="code"><code class="language-shell">$aws eks describe-cluster --name xxxxxxxxxxxx --query &quot;cluster.createdAt&quot; --output text
 2022-06-06T22:29:01.251000+09:00
 $kubectl get pod -n kube-system
 NAME                                            READY   STATUS    RESTARTS   AGE
@@ -137,14 +137,14 @@ kubernetes-external-secrets-xxxxxxxxxxxxxxx     1/1     Running   2          92d
 <p>もろに90日後やんけ!!!!!!!!!!!!!!!!!</p>
 <h3>対応</h3>
 <p>他にもサービスアカウントのtoken切れがいないか以下のクエリをCloudWatch Logs Insightsでコントロールプレーンのログで走らせる。弊社の場合しれっとkubernetes-external-secretsも死んでいた。(kube2iamもそうなんだが完全に死んでいるわけではなくたまにクレデンシャルが取れているときがあるのは結局謎だった</p>
-<pre><code>fields @timestamp
+<pre><code class="language-code">fields @timestamp
 | filter @logStream like /kube-apiserver-audit/
 | filter @message like /seconds after warning threshold/
 | parse @message &quot;subject: *, seconds after warning threshold:*\&quot;&quot; as subject, elapsedtime
 </code></pre>
 <p>もとより諸々のAPIやらmoduleが古いので最新にする予定だったが今回の障害で優先順位が上がった。</p>
 <p>とりあえずの対応として新たにサービスアカウントのトークンさえ発行できればええんやろ精神で再起動でトークンを発行し直して、90日後のgoogleCalendarに予定を入れた。</p>
-<pre><code class="language-bash">$kubectl rollout restart daemonset kube2iam -n kube-system
+<pre><code class="language-code">$kubectl rollout restart daemonset kube2iam -n kube-system
 $kubectl rollout restart deploy kubernetes-external-secrets -n kube-system
 </code></pre>
 <h3>まとめ</h3>
