@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=割とサクサクできてよかった。>
   
@@ -47,14 +52,28 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <article>
-    <h1>コロナ無料検査レポ</h1>
-    <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time>
-    <h2>唾液を一定量出してくださいってどうやって量を出すか果てしなく悩む</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>コロナ無料検査レポ</h1>
+          <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time>
+          </p>
+          <h2>唾液を一定量出してくださいってどうやって量を出すか果てしなく悩む</h2>
 <p>ここ最近は本業ではGolangやNext.jsやらされてるせいであんまりかけることもなく、プライベートはパブリックに出せるというか出しちゃいけないお仕事やってるせいでなんも書けんわいとなってる。</p>
 <p>んで本題、ここ一週間扁桃腺が腫れつつあって「あれ？これもしかしてコロナじゃね？」という疑惑があったので近くのコロナ無料検査所に行ってみた。</p>
 <p>そもそも、実はGW中まるっとコロナで自宅療養してたわけで、まぁコロナってかかるときはかかるんやな〜という感じ。</p>
@@ -67,8 +86,17 @@
 <p>頑張って唾液を出してる間に抗体検査が終わっててNegative(-)だったのでひとまず安心してそのまま出社した。</p>
 <p>前回のコロナのときは抗原検査の段階で陽性判定もらったけど、そもそも陽性陰性ってどっちがどっちがわかんなくて「Positiveってことですか？」と聞いたら医師が10秒ぐらい間をおいて「はい、Positiveです。」と答えてくれたが、冷静に考えると"Positive"って世間一般だと"陽気な人"みたいな感じで使われていて、アカデミック的な文脈では陽性の意味だけどぱっと見でそんなんわからんわな〜。</p>
 <p>ということで軽くレポを書いてみた。</p>
-  </article>
+        </article>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>

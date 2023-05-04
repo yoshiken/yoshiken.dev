@@ -1,16 +1,20 @@
 <body>
   {% include "common/header.j2" %}
-
-  <section>
-    <ul>
-    {% for article in articles %}
-      <li>
-        <time datetime="{{ article.date }}">{{ article.date.strftime('%Y-%m-%d') }}</time><br>
-        <a href="/articles/{{ article. output_file_name}}"> {{ article.title }}</a>
-      </li>
-    {% endfor %}
-    </ul>
-  </section>
-
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <section>
+          <ul>
+            {% for article in articles %}
+            <li>
+              <time datetime="{{ article.date }}">{{ article.date.strftime('%Y-%m-%d') }}</time><br>
+              <a href="/articles/{{ article. output_file_name}}"> {{ article.title }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
   {% include "common/footer.j2" %}
 </body>

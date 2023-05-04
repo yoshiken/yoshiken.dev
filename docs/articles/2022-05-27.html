@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=Grafana cloud便利ですね>
   
@@ -47,14 +52,28 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-  <article>
-    <h1>自宅サーバーモニタリング in Grafana cloud</h1>
-    <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time>
-    <h2>日本語ドキュメントがすくねぇ！</h2>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>自宅サーバーモニタリング in Grafana cloud</h1>
+          <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time>
+          </p>
+          <h2>日本語ドキュメントがすくねぇ！</h2>
 <p>自宅にArkのサーバーを建てた。IPv6プラスだったので色々めんどくさかったので後日書きます。</p>
 <p>でついでなのでそのサーバーの監視したいなーと思って前に登録してたGrafana Cloud使ってみるかということでやってみた</p>
 <p>登録とかはskip</p>
@@ -66,8 +85,17 @@
 <p>したらGrafana Cloudに諸々がpushされるのでちょっと時間経てばいい感じにダッシュボードが表示される</p>
 <p><img src="https://i.imgur.com/2zkdAwo.png" alt=""></p>
 <p>Ark Serverメモリ食いすぎワロタ。(サーバーの元は8GB</p>
-  </article>
+        </article>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>

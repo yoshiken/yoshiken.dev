@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="ja" class="no-js">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -12,16 +13,19 @@
     document.documentElement.classList.add('js');
   </script>
 
-  <!-- Thank you https://github.com/kevquirk/simple.css -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
   <style>
     a {
-      word-wrap:break-word;
+      word-wrap: break-word;
     }
+
     img {
       object-fit: cover;
       width: 100%;
     }
+
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -29,6 +33,7 @@
       color: inherit;
       text-decoration: none;
     }
+
   </style>
   <meta name="description" content=yoshikenがプログラミングや日記、ポエムを書いていくページです。>
   
@@ -47,108 +52,127 @@
 </head>
 
 <body>
-  <header>
-      <div class="blog-title"><h1><a href="/">yoshiken.dev</a></h1></div>
-      <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
-</header>
-
-  <section>
-    <ul>
-    
-      <li>
-        <time datetime="2023-04-22 14:12:00+09:00">2023-04-22</time><br>
-        <a href="/articles/2023-04-22"> Flutter2.xでWindowsで動くGUIアプリを付くときにあれこれ</a>
-      </li>
-    
-      <li>
-        <time datetime="2023-04-20 10:53:01+09:00">2023-04-20</time><br>
-        <a href="/articles/2023-04-20"> “ユーザーの声“という見えない呪縛</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time><br>
-        <a href="/articles/2022-12-30"> 2022年まとめ</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-10-18 08:40:02+09:00">2022-10-18</time><br>
-        <a href="/articles/2022-10-18"> フレッツ光クロス(10Gbps)を導入した</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time><br>
-        <a href="/articles/2022-10-16"> PyConJP 2022 スタッフしてきました。</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-09-08 14:59:36+09:00">2022-09-08</time><br>
-        <a href="/articles/2022-09-08"> 90日後に死んだEKS</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-07-24 23:22:49+09:00">2022-07-24</time><br>
-        <a href="/articles/2022-07-24"> AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time><br>
-        <a href="/articles/2022-06-24"> コロナ無料検査レポ</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-28 00:20:04+09:00">2022-05-28</time><br>
-        <a href="/articles/2022-05-28"> GitHub Actions で GitHub Container Registry にpushしたときに403 Forbiddenが出た時の対処法</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time><br>
-        <a href="/articles/2022-05-27"> 自宅サーバーモニタリング in Grafana cloud</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-25 00:19:44+09:00">2022-05-25</time><br>
-        <a href="/articles/2022-05-25"> yoshken.devのビルドをdocker化した</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time><br>
-        <a href="/articles/2022-05-22-3"> rssフィード兼sitemapを追加した</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-22 11:55:00+09:00">2022-05-22</time><br>
-        <a href="/articles/2022-05-22-2"> Pythonのdatetime型におけるTZの難しさ。2</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-22 01:53:00+09:00">2022-05-22</time><br>
-        <a href="/articles/2022-05-22"> Pythonのdatetime型におけるTZの難しさ。</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-19 01:00:00+09:00">2022-05-19</time><br>
-        <a href="/articles/2022-05-19"> 3年前に出したawscliのPRがmergeされた</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-18 02:00:00+09:00">2022-05-18</time><br>
-        <a href="/articles/2022-05-18-2"> Macを使ってるとportの5000と7000がAirPlayに使われてた</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-18 01:00:00+09:00">2022-05-18</time><br>
-        <a href="/articles/2022-05-18"> VSCodeのワークスペース機能と対面してみた</a>
-      </li>
-    
-      <li>
-        <time datetime="2022-05-17 01:00:00+09:00">2022-05-17</time><br>
-        <a href="/articles/2022-05-17"> yoshiken.dev初めました</a>
-      </li>
-    
-    </ul>
-  </section>
-
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <section>
+          <ul>
+            
+            <li>
+              <time datetime="2023-04-22 14:12:00+09:00">2023-04-22</time><br>
+              <a href="/articles/2023-04-22"> Flutter2.xでWindowsで動くGUIアプリを付くときにあれこれ</a>
+            </li>
+            
+            <li>
+              <time datetime="2023-04-20 10:53:01+09:00">2023-04-20</time><br>
+              <a href="/articles/2023-04-20"> “ユーザーの声“という見えない呪縛</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time><br>
+              <a href="/articles/2022-12-30"> 2022年まとめ</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-10-18 08:40:02+09:00">2022-10-18</time><br>
+              <a href="/articles/2022-10-18"> フレッツ光クロス(10Gbps)を導入した</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time><br>
+              <a href="/articles/2022-10-16"> PyConJP 2022 スタッフしてきました。</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-09-08 14:59:36+09:00">2022-09-08</time><br>
+              <a href="/articles/2022-09-08"> 90日後に死んだEKS</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-07-24 23:22:49+09:00">2022-07-24</time><br>
+              <a href="/articles/2022-07-24"> AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time><br>
+              <a href="/articles/2022-06-24"> コロナ無料検査レポ</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-28 00:20:04+09:00">2022-05-28</time><br>
+              <a href="/articles/2022-05-28"> GitHub Actions で GitHub Container Registry にpushしたときに403 Forbiddenが出た時の対処法</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time><br>
+              <a href="/articles/2022-05-27"> 自宅サーバーモニタリング in Grafana cloud</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-25 00:19:44+09:00">2022-05-25</time><br>
+              <a href="/articles/2022-05-25"> yoshken.devのビルドをdocker化した</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time><br>
+              <a href="/articles/2022-05-22-3"> rssフィード兼sitemapを追加した</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-22 11:55:00+09:00">2022-05-22</time><br>
+              <a href="/articles/2022-05-22-2"> Pythonのdatetime型におけるTZの難しさ。2</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-22 01:53:00+09:00">2022-05-22</time><br>
+              <a href="/articles/2022-05-22"> Pythonのdatetime型におけるTZの難しさ。</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-19 01:00:00+09:00">2022-05-19</time><br>
+              <a href="/articles/2022-05-19"> 3年前に出したawscliのPRがmergeされた</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-18 02:00:00+09:00">2022-05-18</time><br>
+              <a href="/articles/2022-05-18-2"> Macを使ってるとportの5000と7000がAirPlayに使われてた</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-18 01:00:00+09:00">2022-05-18</time><br>
+              <a href="/articles/2022-05-18"> VSCodeのワークスペース機能と対面してみた</a>
+            </li>
+            
+            <li>
+              <time datetime="2022-05-17 01:00:00+09:00">2022-05-17</time><br>
+              <a href="/articles/2022-05-17"> yoshiken.dev初めました</a>
+            </li>
+            
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
   <footer>
-  <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
 </footer>
 </body>
