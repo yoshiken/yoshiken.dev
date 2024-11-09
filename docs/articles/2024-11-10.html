@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>VSCodeの設定はディープリンクで共有してほしい</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script><!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-28XQFWFFT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-28XQFWFFT4');
+  </script>
+
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <style>
+    a {
+      word-wrap: break-word;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+
+    @media(min-width:751px) {
+      img {
+        width: 70vh;
+      }
+    }
+
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=VScodeのディープリンク良いね>
+  
+  <meta property="og:title" content="VSCodeの設定はディープリンクで共有してほしい">
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content="VScodeのディープリンク良いね">
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://yoshiken.dev/articles/2024-11-10">
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2024-11-10>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>VSCodeの設定はディープリンクで共有してほしい</h1>
+          <time datetime="2024-11-09 18:17:00+09:00">2024-11-09</time>
+          </p>
+          <h2>settings.json開いたり設定開いたりはめんどくさいね</h2>
+<h3>VSCodeはディープリンクあるんすよ</h3>
+<p>メインでVSCode使っているんですが、時折新規で入れるときに設定なんだっけとぐぐると毎度<code>cmd + ,</code> で設定開いて～みたいなのが書いてあるんですが、まぁ面倒だなと。</p>
+<p>で、どこで見かけたが忘れたがVSCodeにディープリンクがあることを知った。</p>
+<p>url踏めば設定まで一発でいけるのでQiitaとかZenとか書いてる人はぜひともディープリンクを使ってくれると非常に助かる。</p>
+<p>ドキュメントを調べて解説をしようとしたんだが、ドキュメントが見当たらない。なんで？誰か教えてくれ。</p>
+<p>仕方ないのでChatGPTさんに手伝ってもらいつつ解説する。</p>
+<h3>VSCodeのディープリンク仕様</h3>
+<p>VSCodeのディープリンクのschemeは <code>vscode</code> です。</p>
+<p>つまり <code>vscode://hogehoge</code> となります。</p>
+<p>pathは調べた限り基本は6個あり、</p>
+<ol>
+<li>設定:settings</li>
+<li>コマンド:command</li>
+<li>検索:search</li>
+<li>ファイル:file</li>
+<li>フォルダー:folder</li>
+<li>Diff:file+diff</li>
+</ol>
+<p>です。拡張機能の独自のスキームやpath、webブラウザで使用可能なVS Code for the Webなどは省略します。</p>
+<h3>設定:settings</h3>
+<p>今回一番説明したかった。</p>
+<p><code>vscode://settings/&lt;設定項目&gt;</code> で設定項目までジャンプしてくれる</p>
+<p>例えば以下はミニマップを表示するかどうかの設定まで一気にジャンプしてくれる</p>
+<p><a href="vscode://settings/editor.minimap.enabled">vscode://settings/editor.minimap.enabled</a></p>
+<p>実は設定の歯車のところで<code>URLとして設定をコピー</code> というのがあるのでそこからURLを生成できたりする。</p>
+<p><img alt="Pasted image 20241110010620" src="https://github.com/user-attachments/assets/7a644474-c87e-420b-942e-6003bfc4c389" /></p>
+<p>手動でも設定IDをコピーして上記の設定項目のところに貼り付ければよい。</p>
+<h3>コマンド:command</h3>
+<p><code>vscode://command/&lt;コマンドID&gt;</code> で<strong>VSCodeの</strong>コマンドが実行される。</p>
+<p>注意点はterminalのコマンドではなくVSCodeのコマンドであること。Ctrl+Shift+pで入力可能なアレです。</p>
+<p>例えば以下のURLはミニマップの有効/非有効を切り替えるコマンドのeditor.action.toggleMinimapを実行します</p>
+<p><a href="vscode://command/editor.action.toggleMinimap">vscode://command/editor.action.toggleMinimap</a></p>
+<p>コマンドIDというのはこの歯車マークをポチッと押すとでてくる <code>@command:</code> 以下です</p>
+<p><img alt="Pasted image 20241110011400" src="https://github.com/user-attachments/assets/4e8b49b3-e94e-4bd4-8700-2ccc78128ea8" /></p>
+<p><img alt="Pasted image 20241110011426" src="https://github.com/user-attachments/assets/83747c83-eb6c-40c3-8747-b46092db78b9" /></p>
+<h3>検索:search</h3>
+<p><code>vscode://search?query=&lt;検索語句&gt;</code> で動くらしいが、手元ではイマイチ動かず。</p>
+<p>chatGPTによると「バージョンによっては動かないよ。まぁそもそも公式ドキュメントにないしね！」とのこと。(version 1.95.2のwin版では動かなかった)</p>
+<p>実際できたら便利そうではある。</p>
+<p>以下のような形らしいが動かない。</p>
+<p><a href="vscode://search?query=TODO">vscode://search?query=TODO</a></p>
+<h3>ファイル:file</h3>
+<p>正直使いどころが一番難しそうではある。</p>
+<p><code>vscode://file/&lt;ファイルの絶対パス&gt;</code></p>
+<p>絶対パスなのでうーん。</p>
+<p>windowsの場合はこのようになる。</p>
+<p><a href="vscode://file/C:\Users\yoshiken\Downloads\hogehoge.txt">vscode://file/C:\Users\yoshiken\Downloads\hogehoge.txt</a></p>
+<p>wsl上の開き方がいまいちわからず…</p>
+<p>まぁ自分用のメモとかになら使えるかなぁと</p>
+<h3>フォルダー:folder</h3>
+<p>ワークスペースとして開くらしい</p>
+<p><code>vscode://folder/&lt;フォルダーの絶対パス&gt;</code></p>
+<p>ファイルと同じく絶対パスなので使いどころが難しい</p>
+<h3>Diff:file+diff</h3>
+<p>fileを使いこなせれば楽しそう。</p>
+<p><code>vscode://file/&lt;ファイル1の絶対パス&gt;?diff=&lt;ファイル2の絶対パス&gt;</code></p>
+<p>fileのpathにクエリストリングでdiffをつければ良い。てか他にクエリストリングあるのだろうか…</p>
+<h3>VSCode設定</h3>
+<p>最低限これを設定しないと不愉快になる的なところだけ。</p>
+<p>実際にsettingsのURLこんな感じです的な。</p>
+<p>tabのサイズは<code>2</code>に</p>
+<p><a href="vscode://settings/editor.tabSize">vscode://settings/editor.tabSize</a></p>
+<p>ファイル保存時は末尾にから改行を</p>
+<p><a href="vscode://settings/files.insertFinalNewline">vscode://settings/files.insertFinalNewline</a></p>
+<p>末尾の空白削除</p>
+<p><a href="vscode://settings/files.trimTrailingWhitespace">vscode://settings/files.trimTrailingWhitespace</a></p>
+<p>ミニマップ削除</p>
+<p><a href="vscode://settings/editor.minimap.enabled">vscode://settings/editor.minimap.enabled</a></p>
+        </article>
+      </div>
+    </div>
+  </div>
+  <footer>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
