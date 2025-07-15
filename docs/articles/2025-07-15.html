@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="ja" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+
+  <title>SRE NEXT 2025 に参加してきた</title>
+
+  <script type="module">
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script><!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-28XQFWFFT4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-28XQFWFFT4');
+  </script>
+
+  <!-- Thank you https://picturepan2.github.io/spectre/ -->
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <style>
+    a {
+      word-wrap: break-word;
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+
+    @media(min-width:751px) {
+      img {
+        width: 70vh;
+      }
+    }
+
+    .blog-title a,
+    .blog-title a:visited,
+    .blog-title a:hover,
+    .blog-title a:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  </style>
+  <meta name="description" content=SREを浴びてモチベガン上がり>
+  
+  <meta property="og:title" content="SRE NEXT 2025 に参加してきた">
+<meta property="og:site_name" content="yoshiken.dev" />
+<meta property="og:description" content="SREを浴びてモチベガン上がり">
+<meta property="og:image" content="https://yoshiken.dev/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<meta property="og:url" content="https://yoshiken.dev/articles/2025-07-15">
+  
+  <link rel="canonical" href=https://yoshiken.dev/articles/2025-07-15>
+  <link rel="icon" href="https://yoshiken.dev/favicon.icon">
+  <meta name="theme-color" content="#CCFFFF">
+</head>
+
+<body>
+  <div class="container">
+      <div class="columns">
+            <div class="column col-10 col-mx-auto">
+                  <header>
+                        <div class="blog-title">
+                              <h1><a href="/">yoshiken.dev</a></h1>
+                        </div>
+                        <p>yoshikenがプログラミングや日記、ポエムを書いていくページです</p>
+                  </header>
+                  <hr>
+            </div>
+      </div>
+</div>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-10 col-mx-auto">
+        <article>
+          <p>
+          <h1>SRE NEXT 2025 に参加してきた</h1>
+          <time datetime="2025-07-15 10:00:00+09:00">2025-07-15</time>
+          </p>
+          <h2>カンファレンスはやっぱり楽しいもんだね</h2>
+<h3>はじめに</h3>
+<p>SRE NEXT 2025 に1日目はオンライン、2日は現地で参加してきた。</p>
+<p>https://sre-next.dev/2025/</p>
+<p>資料一覧はここっぽい</p>
+<p>https://zenn.dev/r4ynode/articles/srenext2025-documents</p>
+<p>2日目は朝早くて現地参加の結果、終わりごろには体力尽きてかなり眠かった。やはり現地参加は午後から参加が良いかもしれない。</p>
+<p>聞いていて気になった登壇に聞いていて思ったことをつらつら</p>
+<p>speakerdeck埋め込んだら死ぬほど見づらい。いい加減ブログのデザインどうにかしよう。</p>
+<h3>SRE不在の開発チームが障害対応と向き合った100日間</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/61e71ecbdfc341e1ba5361cda143eb9f" title="SRE不在の開発チームが障害対応と 向き合った100日間 /  100 days dealing with issues without SREs" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>SRE"チーム"はつまるところ、"信頼性を組織として課題に持っているが、それを実現するための人的リソースや予算の確保・文化形成ができていないから、組織として枠組みを立てて内外的にアピールする"という面があると思っている(しらんけど</p>
+<p>ということはそもそも組織全体としてそういう課題を共有できて、社内政治含めアピールしなくても取り組む際に一定のリソースを割くことに抵抗感が少ない場合はチームなんぞをつくらなくても良いよなーと。</p>
+<p>ということを話を聞きながら思ったり思わなかったり。</p>
+<p>で、本題の障害対応についてだが、CSからフィードバックもらって認知のズレがあることに気づき、越境してコミュニケーションしまくって改善したという話が主だった。</p>
+<p>これは本当に大事だなと。まずフィードバックをくれたCSサイドも優秀だし、それを真摯に受け取って自分たちの認知を正すために対話を重ねる判断ができるも優秀。大抵の人はそこで自分たちは間違ってないという言い合いからの対立をしがちなので。</p>
+<p>そこらへんはベンチャー企業全体的にそういう風土が強い気がしている。</p>
+<p>個人的に一番強く、このカンファレンスにおいて印象に残っているのが「教科書的な話は教科書で良い。各社の事例を共有することに意義がある」的なことをスピーカーの人が言っていて、カンファレンスを開いて話を聞く大きな意義はこれだよなぁとしみじみと感じた。</p>
+<h3>SREチームの越境と対話〜どのようにしてイオンスマートテクノロジーは横軸運用チームの廃止に至ったか〜</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/1712530b5c9f48e6a6e6e9454310e0b5" title="SREチームの越境と対話〜どのようにしてイオンスマートテクノロジーは横軸運用チームの廃止に至ったか〜/the-Cross-border-and-dialogue-of-SRE" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>「イキリSREが突如現れてもうまくいかない」という話は相当頷きながら聞いていた。</p>
+<p>僕自身前職でSREとして立ち回るために、まずは1つのプロダクトチームで成功体験を得て、そこでの信用貯金をつかって横断チームを作るみたいな立ち回りをしていた。</p>
+<p>以前の僕の発表資料にも似たようなことを書いていた気がする。</p>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/cc35fd20d25c445ca1eeb9c3477d9fa8" title="サイトの信頼性の前にチームとしての信頼性を高めよう" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>そのためいきなり外部の人間を雇ってチームを作るより組織内の人間を引っこ抜いてSREチームを作って、それから技術的に足りない部分を外部の人間で埋めるという方が結果的にいいよな～と</p>
+<p>とくにSREチームの最初のミッションは現状を越境して対話して整理することだと思うので、社内の立ち回りを知っている人間のほうが重要度が高いと思う。</p>
+<p>ほんとに越境が仕事みたいなところある。</p>
+<h3>OpenTelemetryセマンティック規約の恩恵とMackerel APMにおける活用例</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/3e21fc3571b24c23bcf29eb284e81670" title="OpenTelemetryセマンティック規約の恩恵とMackerel APMにおける活用例 / SRE NEXT 2025" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>弊社でも分散トレーシング導入やろうねって実装中してるのではやくやりて～～～～～って気持ちが高まった。</p>
+<p>以上</p>
+<h3>モニタリング統一への道のり - 分散モニタリングツール統合のためのオブザーバビリティプロジェク</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/7f39a4b5cc574090b81e5101d61c6ed0" title="モニタリング統一への道のり - 分散モニタリングツール統合のためのオブザーバビリティプロジェクト" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p><img src="https://github.com/user-attachments/assets/e4b7c48d-8e22-4244-a87c-14a10e4a0b7d" /></p>
+<p>この表がうーん？となった</p>
+<p>何をどういう基準でこの表にしているのか不明だが、少なくともGrafana+Prometheusの評価低すぎないか？と思った。</p>
+<p>Azue monitorは触ったことがないので除くとして、僕の情報がアップデートされてない可能性があるが</p>
+<ul>
+<li>datadogのログの料金はえぐい</li>
+<li>これはNew Relic UGの人も言っていたが、監視Saas系はどこもログの料金クソ高いので基幹部分だけにしたほうがいいと言っていた</li>
+<li>datadogのmonitorはterraformで管理しようとすると対応してない部分がいくつかって結局手動じゃないと表現できない部分がある</li>
+<li>New Relic UGの人いわく、確かに数年まえはそうだった。最近はかなり対応しているとのこと（両プロダクト</li>
+<li>Amazon Cloudwatchは全部だめ</li>
+<li>logsに関しては検索性悪いし、高いし、設定はめんどくさい</li>
+<li>メトリクスのほうがまだいいかもしれないが、それでも単純な設定しかできないし、複雑なことやろうとするとCW以外のもの使わないといけない</li>
+<li>何よりAWSにログインしないと見れないは最悪すぎる</li>
+</ul>
+<p>その点Grafana+Prometheusはセルフホスティングの運用コストという点を除けばかなり優秀な記憶。</p>
+<p>登壇でも特に触れられてないのでかなり疑問。オンライン参加だったのでask the speakerで聞けないのが残念。二日目ニフティーのブースに行けばよかった、他のやらねばいけない用事と眠気で忘れてしまった。</p>
+<h3>〜『世界中の家族のこころのインフラ』を目指して”次の10年”へ〜 SREが導いたグローバルサービスの信頼性向上戦略とその舞台裏</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/96db9ec5444d47c98db2241d517f673e" title="〜『世界中の家族のこころのインフラ』を目指して”次の10年”へ〜 SREが導いたグローバルサービスの信頼性向上戦略とその舞台裏 / Towards the Next Decade: Enhancing Global Service Reliability" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>っぱAuroraよ！！！！！！！！</p>
+<p>登壇した方とは二日目にブースで少しお話させていただいた。</p>
+<p>やはりRDS proxyを外すのはなかなかにしんどそうだったが結果的にはパフォーマンスチューニングできたのでヨシッ</p>
+<p>日本・米国・EUという順でユーザーが多く、米国・EUの物理的距離が近いus-east-1を選定した話は面白かった。確かに米国・EUをカバーするならある程度許容されそうではある。</p>
+<p>ap-northeast-1以外のリージョンはまともに触ったことがないんだが、グローバル展開するときは物理的制約を考慮しなくてはいけないんだと勉強になった。</p>
+<p>キャッシュ戦略はいつでも我々を待っている(とてもつらい)</p>
+<h3>ABEMAの本番環境負荷試験への挑戦</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/7ae890b40ffa44068d06de2bbe29a4f0" title="ABEMAの本番環境負荷試験への挑戦" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>k8s構成のnode/podの負荷試験が主だった内容</p>
+<p>ABEMAレベルだと検証環境を構築するのは金銭的・技術的コストがかかるので本番環境でやるほうが良いと。</p>
+<p>その意思決定できるのがすごいなと思った。経営陣も負荷に対して同じ課題感を持っているので話が進みやすかったのかもしれないが、経営レイヤーでその意思決定ができるのがサイバーエージェントの強みなんだろうなと。</p>
+<p>話を聞いててなるほどとは思ったが、結局DBに関しては分離せずにやったっぽくて、どちらかというとDB側の話を聞きたかったのですこし残念。ボトルネックになりがちなのはDBなので。</p>
+<h3>マルチプロダクト環境におけるSREの役割 〜SmartHRの組織立ち上げから学ぶ実践知〜</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/b8c7afa677fc48ce93716ea83e04f649" title="マルチプロダクト環境におけるSREの役割 / SRE NEXT 2025 lunch session" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>毎度思うし、自分もそうだったんだが、SREチーム立ち上げ時に一人チームになりがち。</p>
+<p>とはいえ大体は成功しているのでSREチーム立ち上げ時に一人というのはある種の成功パターンなんでは？と思ってきている今日このごろ。</p>
+<p>あと、インフラ屋さんになりがちなので気をつけるのは本当にそう思う。</p>
+<p>というかなんでSREはインフラレイヤが強く求められがちなんだろうか？と考えたけど、インフラレイヤーが最も横断しているレイヤーだからなんだろうか？逆をいうとフロントエンドはドメインで適切に分割されている。</p>
+<p>あとはよくあるチーム立ち上げの話。これからSREチーム立ち上げようみたいな人には良いかもです。</p>
+<p>お弁当美味しかったです。</p>
+<h3>顧客の画像データをテラバイト単位で配信する画像サーバを WebP にした際に起こった課題とその対応策 ～継続的な取り組みを添えて～</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/c915991f203e44faa47c6f92eb20940b" title="顧客の画像データをテラバイト単位で配信する 画像サーバを WebP にした際に起こった課題と その対応策  ～継続的な取り組みを添えて～" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>開発チームのマインドがすごく素敵なお話だった。</p>
+<p>webpとかキャッシュ戦略とかのお話も良かったが、「ユーザーのテンプレートは、ユーザーが頑張って作った資産であってユーザーのもの。それを自動で手を加えてはいけない」というお話が最高だった。</p>
+<p>普通に考えればアップロードされたテンプレートを自動で書き換えるのが早いが、"ユーザーの資産"という考え方は特に我々エンジニアは忘れがちなので心に刻んでいきたい。</p>
+<p>見積もりから全然違う値が出たというのはあるあるなんだが、そこから何故違ったかみたいなところを深追いして結果漏れがあったので適用したら許容範囲内になったのはとても良かった。</p>
+<p>というか10%削減だけでも十分な気はする。</p>
+<h3>オンコール入門〜ページャーが鳴る前に、あなたが備えられること〜</h3>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/364f9ab8ceb844bb8ae2a09e429c4315" title="オンコール⼊⾨〜ページャーが鳴る前に、あなたが備えられること〜 / Before The Pager Rings" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
+
+<p>「悩んだらエスカレーション」額縁に入れて家訓にしたい。</p>
+<p>わからなかったり不明な部分を図やチートシートとしてドキュメントに残すのはとても良いよな～と思った。あとからjoinする人の助けにもなるし、なによりAIが台頭しているこの時代にドキュメンテーションは正義なので投資する価値がある。(データやログの流れとかをドキュメントにしてくれるAIが欲しいわけだが)</p>
+<h3>システム障害対応のツマミになる話</h3>
+<p>「システム障害対応の教科書」の著者である木村誠明さんの登壇。</p>
+<p>とても良かったが資料は公開されていない。</p>
+<p>恥ずかしながらまだ著書を読んでいないのでとりあえず購入はした。</p>
+<p>「システム障害に対して体系的にまとまっていない。若い人が知見が得られない。やって覚えるしか無い」というのはあまりにも深くささった。</p>
+<p>昔から後輩から「どうやってインシデント対応に対して強く慣れますか」みたいな質問にたいしてとても課題を感じていた。</p>
+<p>まだ書籍は読んでいないがそういった面のアプローチとして良い著書なんだろうなというが登壇を聞いていて感じた。</p>
+<h3>その他</h3>
+<p>大体どのカンファレンスのNOCにもいつものメンツがいるだろうなと思って覗いたらやっぱいた。</p>
+<p>話をしていて久々にNOCがしたくなったので年末か来年あたりにNOC活動を再開しようかな～と思ったり思わなかったり。</p>
+<p>今回のメインの目的であるk8s × GPUインスタンスという構成の知見を得るためスポンサーブースや廊下とかで色んな人に聞いて回ったが、どうやらかなり特殊らしくこの構成でやっている組織は見当たらなかった。残念。</p>
+<p>懇親会でたまたま同じテーブルになった人にVRの素晴らしさを早口オタクで語ったら、そうちの一人がSRE kaigiで実行委員長をやったりSRE Magazine編集長やっているしょっさん(さん) <a href="https://x.com/syossan27">@syossan27</a> で、SRE kaigi行くか～という気持ちになった。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+  <footer>
+  <div class="container">
+    <div class="columns">
+      <div class="column col-3 col-mx-auto">
+        <a href="/">HOME</a> / <a href="/about">About</a> / <a href="https://github.com/yoshiken">Github</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
