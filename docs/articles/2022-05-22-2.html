@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>Pythonのdatetime型におけるTZの難しさ。2</h1>
-          <time datetime="2022-05-22 11:55:00+09:00">2022-05-22</time>
-          </p>
-          <h2>別に文字を勝手に加工してやればええやんという結論</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>Pythonのdatetime型におけるTZの難しさ。2</h1>
+              <time datetime="2022-05-22 11:55:00+09:00">2022-05-22</time>
+            </header>
+            <div class="article-body">
+              <h2>別に文字を勝手に加工してやればええやんという結論</h2>
 <p><a href="https://yoshiken.dev/articles/2022-05-22">Pythonのdatetime型におけるTZの難しさ。</a> でうーんうーん悩んで <code>2022-05-22T01:53:00+09:00</code> って書く結論になったけど、寝て起きたらいや、別に <code>2022-05-22 11:55:00</code> って書いてpythonでconvertするときに諸々追加してあげればええやんという結論で既存の書き方で良くなった。</p>
 <p>やっぱ煮詰まったときは寝るに限る。</p>
 <p>実際の処理はこんな感じ</p>
@@ -104,7 +101,9 @@
 &lt;class 'datetime.datetime'&gt;
 </code></pre>
 <p>はいGG〜</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

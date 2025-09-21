@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>自宅サーバーモニタリング in Grafana cloud</h1>
-          <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time>
-          </p>
-          <h2>日本語ドキュメントがすくねぇ！</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>自宅サーバーモニタリング in Grafana cloud</h1>
+              <time datetime="2022-05-27 02:52:55+09:00">2022-05-27</time>
+            </header>
+            <div class="article-body">
+              <h2>日本語ドキュメントがすくねぇ！</h2>
 <p>自宅にArkのサーバーを建てた。IPv6プラスだったので色々めんどくさかったので後日書きます。</p>
 <p>でついでなのでそのサーバーの監視したいなーと思って前に登録してたGrafana Cloud使ってみるかということでやってみた</p>
 <p>登録とかはskip</p>
@@ -98,7 +95,9 @@
 <p>したらGrafana Cloudに諸々がpushされるのでちょっと時間経てばいい感じにダッシュボードが表示される</p>
 <p><img src="https://i.imgur.com/2zkdAwo.png" alt=""></p>
 <p>Ark Serverメモリ食いすぎワロタ。(サーバーの元は8GB</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

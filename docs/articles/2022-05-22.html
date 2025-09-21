@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>Pythonのdatetime型におけるTZの難しさ。</h1>
-          <time datetime="2022-05-22 01:53:00+09:00">2022-05-22</time>
-          </p>
-          <h2>Pythonのdatetimeには二種類あったという話</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>Pythonのdatetime型におけるTZの難しさ。</h1>
+              <time datetime="2022-05-22 01:53:00+09:00">2022-05-22</time>
+            </header>
+            <div class="article-body">
+              <h2>Pythonのdatetimeには二種類あったという話</h2>
 <p>今このブログのsitemapを作ってるんですが、そのついでにdate周りを整備しようと思ったんですが、案外めんどくさかった。というかいままで意識してなかっった。</p>
 <p>まずはdatetimeオブジェクトには二種類ある。</p>
 <p><a href="https://docs.python.org/ja/3/library/datetime.html?highlight=datetime#aware-and-naive-objects">datetime --- 基本的な日付型および時間型 — Python 3.10.4 ドキュメント</a></p>
@@ -135,7 +132,9 @@ UTC
 <p>温泉入った。満足。</p>
 <p><a href="https://www.yurakirari.com/miyazawako/">埼玉県飯能市の天然温泉施設「宮沢湖温泉 喜楽里 別邸」</a></p>
 <p>ただ、片道2時間はきついねぇ〜</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>GitHub Actions で GitHub Container Registry にpushしたときに403 Forbiddenが出た時の対処法</h1>
-          <time datetime="2022-05-28 00:20:04+09:00">2022-05-28</time>
-          </p>
-          <h2>GitHub Actions　と　GitHub Container Registry の組み合わせってあんまり美味しくないかもって思ってきた。</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>GitHub Actions で GitHub Container Registry にpushしたときに403 Forbiddenが出た時の対処法</h1>
+              <time datetime="2022-05-28 00:20:04+09:00">2022-05-28</time>
+            </header>
+            <div class="article-body">
+              <h2>GitHub Actions　と　GitHub Container Registry の組み合わせってあんまり美味しくないかもって思ってきた。</h2>
 <p>このcommit</p>
 <p><a href="https://github.com/yoshiken/yoshiken.dev.python/commit/cd50ff68d743f505c3a50e1f7b8cf6078394a5a9">add ghcr lastest · yoshiken/yoshiken.dev.python@cd50ff6</a></p>
 <p>公式通りに実装したんだけど、 <code>Error: buildx failed with: error: failed to solve: unexpected status: 403 Forbidden</code> って認証が通らなかった。</p>
@@ -113,7 +110,9 @@
 <p>これでGithub上でrerunするなりempty commitするなりでGG</p>
 <p><a href="https://github.com/yoshiken/yoshiken.dev.python/runs/6627715811?check_suite_focus=true">GitHub Actions rerun · yoshiken/yoshiken.dev.python@55b7f16</a></p>
 <p><img src="https://i.imgur.com/DgLmZSW.png" alt=""></p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

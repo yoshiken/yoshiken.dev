@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>今日から始めるインシデントタスクフォースの作り方</h1>
-          <time datetime="2023-06-11 23:32:00+09:00">2023-06-11</time>
-          </p>
-          <h2>タスクフォースって言ったかっただけ…じゃなーい！！！</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>今日から始めるインシデントタスクフォースの作り方</h1>
+              <time datetime="2023-06-11 23:32:00+09:00">2023-06-11</time>
+            </header>
+            <div class="article-body">
+              <h2>タスクフォースって言ったかっただけ…じゃなーい！！！</h2>
 <h3>まえがき</h3>
 <p>長くなりそうなので、まずはまえがきから。</p>
 <p>書こうと思ったきっかけ的なところは、マネージメントしているチームでちょくちょくインシデントが起きていて、まぁそれ自体は別に良いこと（ただし事業的にヤバめなのはよくない）なんですが、いざそのインシデントが起きたときに俗に言うジュニア/ミドル層のインシデント時の対応があんまりよろしくない、というより改善の余地があるので、一例としてこんな感じで進めると良いよ～的なことを書いてみようかなと。</p>
@@ -236,7 +233,9 @@
 <p>ここでいう経験は別に直接オペレーターとして手を動かすというわけではなくその場に居合わせるだけでも十二分に効果があると思います。</p>
 <p>最初の方に書いた野次馬歓迎というのはそういう意味でもあります。</p>
 <p>恐れず、だが慎重にインシデント対応をしていき、自己の成長にも利用していきましょう。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

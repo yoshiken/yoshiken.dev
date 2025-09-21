@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>2022年まとめ</h1>
-          <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time>
-          </p>
-          <h2>久々にGolang書いたり、マネージメントしたり、オンサイトカンファレンス運営したり</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>2022年まとめ</h1>
+              <time datetime="2022-12-31 23:29:01+09:00">2022-12-31</time>
+            </header>
+            <div class="article-body">
+              <h2>久々にGolang書いたり、マネージメントしたり、オンサイトカンファレンス運営したり</h2>
 <h3>お仕事</h3>
 <p>今年は</p>
 <p>SRE専任→主務プロダクト開発 兼務SRE→主務プロダクト開発マネージャー 兼務SRE</p>
@@ -116,7 +113,9 @@
 <p>そして、コロナでやや疎遠気味になってしまった友人たちと酒を交わしたいですね。</p>
 <h3>〆</h3>
 <p>本年も誠にありがとうございました。来年もよろしくおねがいします。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

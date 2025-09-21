@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>PyConJP 2022 スタッフしてきました。</h1>
-          <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time>
-          </p>
-          <h2>やっぱ人がいっぱいいるオンサイトいいっすね～</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>PyConJP 2022 スタッフしてきました。</h1>
+              <time datetime="2022-10-16 13:07:01+09:00">2022-10-16</time>
+            </header>
+            <div class="article-body">
+              <h2>やっぱ人がいっぱいいるオンサイトいいっすね～</h2>
 <p>注: これは個人のBlogですのでPyConJPの公式な見解ではありません。公式な見解は<a href="https://pyconjp.blogspot.com/">PyConJP公式blog</a>を御覧ください。</p>
 <h3>お前誰</h3>
 <p>一応今回スタッフをやっていた吉田健太 a.k.a. yoshikenです。</p>
@@ -126,7 +123,9 @@
 <p><a href="https://corp.every.tv/">株式会社エブリー｜every, Inc.</a></p>
 <h4>感謝だが…</h4>
 <p>役職がポンポン変わって、オンサイトが当分なかったもんだから名刺の交換サボってたせいで名刺渡すたびに「今現在だとこの名刺の役職は1mmも関係ないのですが…」ってめんどくさくなったので、名刺を更新したい気持ちとどうせまた役職変わるんだろうなぁという気持ちがせめぎ合っている…</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>
