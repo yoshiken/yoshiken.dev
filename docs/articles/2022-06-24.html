@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>コロナ無料検査レポ</h1>
-          <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time>
-          </p>
-          <h2>唾液を一定量出してくださいってどうやって量を出すか果てしなく悩む</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>コロナ無料検査レポ</h1>
+              <time datetime="2022-06-24 01:35:49+09:00">2022-06-24</time>
+            </header>
+            <div class="article-body">
+              <h2>唾液を一定量出してくださいってどうやって量を出すか果てしなく悩む</h2>
 <p>ここ最近は本業ではGolangやNext.jsやらされてるせいであんまりかけることもなく、プライベートはパブリックに出せるというか出しちゃいけないお仕事やってるせいでなんも書けんわいとなってる。</p>
 <p>んで本題、ここ一週間扁桃腺が腫れつつあって「あれ？これもしかしてコロナじゃね？」という疑惑があったので近くのコロナ無料検査所に行ってみた。</p>
 <p>そもそも、実はGW中まるっとコロナで自宅療養してたわけで、まぁコロナってかかるときはかかるんやな〜という感じ。</p>
@@ -99,7 +96,9 @@
 <p>頑張って唾液を出してる間に抗体検査が終わっててNegative(-)だったのでひとまず安心してそのまま出社した。</p>
 <p>前回のコロナのときは抗原検査の段階で陽性判定もらったけど、そもそも陽性陰性ってどっちがどっちがわかんなくて「Positiveってことですか？」と聞いたら医師が10秒ぐらい間をおいて「はい、Positiveです。」と答えてくれたが、冷静に考えると"Positive"って世間一般だと"陽気な人"みたいな感じで使われていて、アカデミック的な文脈では陽性の意味だけどぱっと見でそんなんわからんわな〜。</p>
 <p>ということで軽くレポを書いてみた。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

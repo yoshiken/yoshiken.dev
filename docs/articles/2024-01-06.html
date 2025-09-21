@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>2023年振り返り2024年抱負</h1>
-          <time datetime="2024-01-06 23:32:00+09:00">2024-01-06</time>
-          </p>
-          <h2>去年は過去一番成長実感無かったかも</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>2023年振り返り2024年抱負</h1>
+              <time datetime="2024-01-06 23:32:00+09:00">2024-01-06</time>
+            </header>
+            <div class="article-body">
+              <h2>去年は過去一番成長実感無かったかも</h2>
 <h3>お仕事</h3>
 <p>一昨年と変わらずマネージャーをやってました。
 去年は1年間ずっとって感じです。</p>
@@ -116,7 +113,9 @@
 <p>Twitterで連絡まってます。</p>
 <h3>抱負</h3>
 <p>エンジニアとしてのキャリアや、ライフプランを考える年というか歳だったのでそれらにコミットしていく年にしたいっすね。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>こうして俺は婚活を辞めた</h1>
-          <time datetime="2024-06-22 12:46:00+09:00">2024-06-22</time>
-          </p>
-          <h2>自分、婚活向いてないかもです</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>こうして俺は婚活を辞めた</h1>
+              <time datetime="2024-06-22 12:46:00+09:00">2024-06-22</time>
+            </header>
+            <div class="article-body">
+              <h2>自分、婚活向いてないかもです</h2>
 <h3>前提</h3>
 <p>婚活において何よりもスペックが正義なのでスペックを書いていく</p>
 <ul>
@@ -300,7 +297,9 @@
 <p>それなりにのコストを支払って自分の価値観や結婚観などが整理できたのはまぁ良かったとは思う。</p>
 <p>思う反面終わってんなぁという感想もまた然り。</p>
 <p>最近兄が正式に婚姻届の提出、それに伴う両家顔合わせもしてきたのでとりあえず我が家の血はなんとかなりそうです。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

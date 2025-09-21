@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>yoshiken.dev初めました</h1>
-          <time datetime="2022-05-17 01:00:00+09:00">2022-05-17</time>
-          </p>
-          <h2>なんで初めたか</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>yoshiken.dev初めました</h1>
+              <time datetime="2022-05-17 01:00:00+09:00">2022-05-17</time>
+            </header>
+            <div class="article-body">
+              <h2>なんで初めたか</h2>
 <p>最近アウトプットしてないなーと思いつつ、zennやQiitaに書くほど時間が取れないし、なんかこうやってみたかった。</p>
 <p>あとgithubのプロフィールに別のドメイン乗せてたんだけどちょくちょくリンク切れてるって問い合わせがあって、むかーーーーしに実験で使ってたやつなので何置いてたかすら忘れてる。</p>
 <h2>仕組み</h2>
@@ -113,7 +110,9 @@ if not os.path.isdir(path):
 </code></pre>
 <p>でいいのね。やっぱり定期的な知識のアップデート大事。けどパッチノート読む時間も無い。</p>
 <p>そんなときに最近使い始めたGitHub Copilotがすげー役に立った。「あれ？僕よりコードうまくない？僕いる？」ってなってしまった。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

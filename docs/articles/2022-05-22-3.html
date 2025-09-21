@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>rssフィード兼sitemapを追加した</h1>
-          <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time>
-          </p>
-          <h2>X・M・L!X・M・L!</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>rssフィード兼sitemapを追加した</h1>
+              <time datetime="2022-05-22 15:16:17+09:00">2022-05-22</time>
+            </header>
+            <div class="article-body">
+              <h2>X・M・L!X・M・L!</h2>
 <p>sitemapというかrssフィード欲しいなと思って作ってみた。嘘です。作ってみたかっただけです。</p>
 <p><a href="https://yoshiken.dev/feed.xml">https://yoshiken.dev/feed.xml</a></p>
 <p>正直色んなサイトのAtom1.0見ても書いてあることバラバラで最終的にこちらのサイトを参考にした</p>
@@ -104,7 +101,9 @@ jobs:
       - run: curl -X GET &quot;https://www.google.com/ping?sitemap=https://yoshiken.dev/feed.xml&quot;
 </code></pre>
 <p>シュッと最小ミニマム構成</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

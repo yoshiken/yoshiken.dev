@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>yoshken.devのビルドをdocker化した</h1>
-          <time datetime="2022-05-25 00:19:44+09:00">2022-05-25</time>
-          </p>
-          <h2>だって環境依存するのめんどくさいだもの</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>yoshken.devのビルドをdocker化した</h1>
+              <time datetime="2022-05-25 00:19:44+09:00">2022-05-25</time>
+            </header>
+            <div class="article-body">
+              <h2>だって環境依存するのめんどくさいだもの</h2>
 <p>サクッとdocker化</p>
 <p><a href="https://github.com/yoshiken/yoshiken.dev.python">yoshiken/yoshiken.dev.python</a></p>
 <p>DockerHubで公開</p>
@@ -95,7 +92,9 @@
 <p><a href="https://docs.docker.com/docker-hub/builds/">Set up Automated Builds | Docker Documentation</a></p>
 <p>あとpush後のdocker scanも有料でマネタイズ大変そう。</p>
 <p>github actions使えば自動でpushできるけど一旦stayで。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

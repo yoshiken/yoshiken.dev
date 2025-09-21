@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</h1>
-          <time datetime="2022-07-24 23:22:49+09:00">2022-07-24</time>
-          </p>
-          <h2>AWS ALB Ingress Controller to AWS Load Balancer Controller自体は割りと簡単</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>AWS EKSのAWS ALB Ingress Controllerを破壊的変更を加えずにAWS Load Balancer ControllerにアップデートかつELBをまとめる方法</h1>
+              <time datetime="2022-07-24 23:22:49+09:00">2022-07-24</time>
+            </header>
+            <div class="article-body">
+              <h2>AWS ALB Ingress Controller to AWS Load Balancer Controller自体は割りと簡単</h2>
 <h3>前提</h3>
 <p>現在面倒をみているプロダクトがEKSv1.19→v1.21にアップデートをした。事業部専属というわけではなくてSREとして別プロダクトばっかりみてたらサポート残り1ヶ月の状態で「あ、やべ。残り一ヶ月でEKS強制アプデ入るわ」となり、やらなくては～となったがプロダクトのフロントエンドの子が「やってみたいです！」というので他のレイヤーに対する熱意◎でまかせたら、会社都合でその子が部署異動で「開発環境はアプデ終わりましたが本番はできませんでした…後はよろしくお願いいたします…」とバトンを渡され虚構に陥りながら開発のリハ無しに本番のアップデートをした。まぁよくある話っすね</p>
 <p>基本的には弊社のSREの方針としては運用は各事業部に任せることが前提とはいいつつほぼほぼノールックだったのは反省点。</p>
@@ -201,7 +198,9 @@ finalizers:
 <p>みたいな感じで残ってるので <code>$kubectl patch ingress [ingress-loadbalancername] -n development -p '{"metadata":{"finalizers":[]}}' --type=merge</code> おりゃ！ってすればemptyで上書きします。</p>
 <p>一応 <code>-wait false</code> つければレスポンス待たずに消えるらしいのでお好みで。</p>
 <p>ちなみにsystem:admin権限でも消せなかったので特級呪物って呼んでました</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>VSCodeの設定はディープリンクで共有してほしい</h1>
-          <time datetime="2024-11-10 03:17:00+09:00">2024-11-10</time>
-          </p>
-          <h2>settings.json開いたり設定開いたりはめんどくさいね</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>VSCodeの設定はディープリンクで共有してほしい</h1>
+              <time datetime="2024-11-10 03:17:00+09:00">2024-11-10</time>
+            </header>
+            <div class="article-body">
+              <h2>settings.json開いたり設定開いたりはめんどくさいね</h2>
 <h3>VSCodeはディープリンクあるんすよ</h3>
 <p>メインでVSCode使っているんですが、時折新規で入れるときに設定なんだっけとぐぐると毎度<code>cmd + ,</code> で設定開いて～みたいなのが書いてあるんですが、まぁ面倒だなと。</p>
 <p>で、どこで見かけたが忘れたがVSCodeにディープリンクがあることを知った。</p>
@@ -155,7 +152,9 @@
 <p><a href="vscode://settings/files.trimTrailingWhitespace">vscode://settings/files.trimTrailingWhitespace</a></p>
 <p>ミニマップ削除</p>
 <p><a href="vscode://settings/editor.minimap.enabled">vscode://settings/editor.minimap.enabled</a></p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

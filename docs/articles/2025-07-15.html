@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>SRE NEXT 2025 に参加してきた</h1>
-          <time datetime="2025-07-15 10:00:00+09:00">2025-07-15</time>
-          </p>
-          <h2>カンファレンスはやっぱり楽しいもんだね</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>SRE NEXT 2025 に参加してきた</h1>
+              <time datetime="2025-07-15 10:00:00+09:00">2025-07-15</time>
+            </header>
+            <div class="article-body">
+              <h2>カンファレンスはやっぱり楽しいもんだね</h2>
 <h3>はじめに</h3>
 <p>SRE NEXT 2025 に1日目はオンライン、2日は現地で参加してきた。</p>
 <p><a href="https://sre-next.dev/2025/">https://sre-next.dev/2025/</a></p>
@@ -190,7 +187,9 @@
 <p>話をしていて久々にNOCがしたくなったので年末か来年あたりにNOC活動を再開しようかな～と思ったり思わなかったり。</p>
 <p>今回のメインの目的であるk8s × GPUインスタンスという構成の知見を得るためスポンサーブースや廊下とかで色んな人に聞いて回ったが、どうやらかなり特殊らしくこの構成でやっている組織は見当たらなかった。残念。</p>
 <p>懇親会でたまたま同じテーブルになった人にVRの素晴らしさを早口オタクで語ったら、そうちの一人がSRE kaigiで実行委員長をやったりSRE Magazine編集長やっているしょっさん(さん) <a href="https://x.com/syossan27">@syossan27</a> で、SRE kaigi行くか～という気持ちになった。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

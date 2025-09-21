@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>90日後に死んだEKS</h1>
-          <time datetime="2022-09-08 14:59:36+09:00">2022-09-08</time>
-          </p>
-          <h2>EKS1.21以上にすると90日後にサービスアカウントトークンの有効期限が来て死ぬ</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>90日後に死んだEKS</h1>
+              <time datetime="2022-09-08 14:59:36+09:00">2022-09-08</time>
+            </header>
+            <div class="article-body">
+              <h2>EKS1.21以上にすると90日後にサービスアカウントトークンの有効期限が来て死ぬ</h2>
 <h3>TL;DR</h3>
 <ul>
 <li>KubernetesのBoundServiceAccountTokenVolumeにサービスアカウントトークンの有効期限が導入された</li>
@@ -167,7 +164,9 @@ $kubectl rollout restart deploy kubernetes-external-secrets -n kube-system
 <p>AWSコンソール画面はチラチラ見にいきましょう。</p>
 <p>アップデートはこまめにしましょう。</p>
 <p>以上3点。得るものは少なった。リカバリーの工数は多かった。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

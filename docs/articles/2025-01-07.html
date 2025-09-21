@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>HTTP Status 426 Upgrade Requiredについて調べた</h1>
-          <time datetime="2025-01-07 12:56:00+09:00">2025-01-07</time>
-          </p>
-          <h2>プロトコル古いからアップデートしろって話らしい</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>HTTP Status 426 Upgrade Requiredについて調べた</h1>
+              <time datetime="2025-01-07 12:56:00+09:00">2025-01-07</time>
+            </header>
+            <div class="article-body">
+              <h2>プロトコル古いからアップデートしろって話らしい</h2>
 <p>前職で新規アプリのバックエンドを作っていて、各種ステータスコードを定義している時に新卒くんから「アプリ強制アップデートのステータスコードはxxxなんですか？426 Upgrade Requiredってあるんですけど」ってレビューうけて「これはプロトコルとかに使われるやつでアプリのアップデートはあんまり適切ではないかも」と返したけどそもそも426って実環境で見たことないorあんまり見たことかも～ってことを思い出しので調べたのをメモ。</p>
 <p>てか、日本語で書かれてるのまったくない。</p>
 <h3>426の仕様</h3>
@@ -126,7 +123,9 @@ Upgrade: h2c, websocket
 <h3>アプリの強制アップデートのプロトコルとして適切か</h3>
 <p>結論として、HTTP 426は「プロトコルの切り替え」を目的としたステータスコードであり、アプリのアップデートを促す用途には適してはないかなと。</p>
 <p>アプリの強制アップデートには専用のAPIレスポンスや別の設計パターンを考える必要があると思います。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

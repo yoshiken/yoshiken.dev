@@ -6,5 +6,6 @@
   ],
   "[jinja-html]": {
     "editor.formatOnSave": true
-  }
+  },
+  "kiroAgent.configureMCP": "Enabled"
 }

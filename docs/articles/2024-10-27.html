@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>HUAWEI FreeClipレビュー</h1>
-          <time datetime="2024-10-27 18:17:00+09:00">2024-10-27</time>
-          </p>
-          <h2>室内最強説ある</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>HUAWEI FreeClipレビュー</h1>
+              <time datetime="2024-10-27 18:17:00+09:00">2024-10-27</time>
+            </header>
+            <div class="article-body">
+              <h2>室内最強説ある</h2>
 <h3>初のオープンイヤー</h3>
 <p>今見たら8月6日に買っていた。大体3ヶ月弱使っていることになる。もっと前に買っていたような錯覚を覚えるほど使い込んでいる。</p>
 <p>FreeClipは初めてのオープンイヤーだ。</p>
@@ -151,7 +148,9 @@
 <p>それに音質もあまり期待してなかったがかなり良い。</p>
 <p>室内/室外通して言えることだが、装着感はかなりよく、カナル型に比べて圧倒的に装着脱着のコストも低い。</p>
 <p>ぜひともおすすめしたい一品である。</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>

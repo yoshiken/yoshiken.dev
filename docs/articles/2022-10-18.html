@@ -24,22 +24,17 @@
   <!-- Thank you https://picturepan2.github.io/spectre/ -->
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
   <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+  <!-- Custom styles for improved design -->
+  
+  <link rel="stylesheet" href="../custom.css">
+  
   <style>
+    /* Legacy word-wrap for links */
     a {
       word-wrap: break-word;
     }
 
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-
-    @media(min-width:751px) {
-      img {
-        width: 70vh;
-      }
-    }
-
+    /* Blog title styling */
     .blog-title a,
     .blog-title a:visited,
     .blog-title a:hover,
@@ -80,13 +75,15 @@
 </div>
   <div class="container">
     <div class="columns">
-      <div class="column col-10 col-mx-auto">
-        <article>
-          <p>
-          <h1>フレッツ光クロス(10Gbps)を導入した</h1>
-          <time datetime="2022-10-18 08:40:02+09:00">2022-10-18</time>
-          </p>
-          <h2>1Gbpsは平成までだよね～</h2>
+      <div class="column col-12">
+        <div class="article-container">
+          <article class="article-content">
+            <header>
+              <h1>フレッツ光クロス(10Gbps)を導入した</h1>
+              <time datetime="2022-10-18 08:40:02+09:00">2022-10-18</time>
+            </header>
+            <div class="article-body">
+              <h2>1Gbpsは平成までだよね～</h2>
 <h3>引っ越しました</h3>
 <p>職場まで1時間ぐらいかかってて中々にしんどかったので引っ越しをした。職場まで大体30分くらい。</p>
 <p>で、引っ越しついでにVDSLに限界を感じてたので10Gbps感じて～とか思ってたので光配線方式のマンションを探した。</p>
@@ -140,7 +137,9 @@
 <p>まぁまぁ満足。</p>
 <p>たまに上りが不安定にはなって100~150Mbpsになる時はあるけど前に比べて全然快適。</p>
 <p>インターネットサイコー！</p>
-        </article>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </div>
