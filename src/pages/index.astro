@@ -14,10 +14,7 @@ const dateFormatter = new Intl.DateTimeFormat("ja-JP", {
 ---
 
 <BaseLayout title="yoshiken.dev" description={description}>
-  <section class="page" aria-labelledby="articles-heading">
-    <header class="page-header">
-      <h1 id="articles-heading" class="page-title">Articles</h1>
-    </header>
+  <section class="page" aria-label="記事一覧">
     <ol class="article-list">
       {articles.map((article) => (
         <li>
