@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="ページが見つかりません"
+  description="指定されたページは見つかりませんでした。"
+  noindex
+>
+  <section class="page">
+    <header class="page-header">
+      <h1 class="page-title">404</h1>
+    </header>
+    <div class="prose">
+      <p>指定されたページは見つかりませんでした。</p>
+      <p><a href="/">記事一覧へ戻る</a></p>
+    </div>
+  </section>
+</BaseLayout>

@@ -4,8 +4,5 @@
     "borderWidth : 1px",
     "borderColor : {color}; opacity: 0.5"
   ],
-  "[jinja-html]": {
-    "editor.formatOnSave": true
-  },
   "kiroAgent.configureMCP": "Enabled"
 }
